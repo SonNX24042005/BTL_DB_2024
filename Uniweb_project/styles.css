@@ -11,7 +11,7 @@
     margin-bottom: 0;
     padding-bottom: 0;
     position: relative;
-    background-image: linear-gradient(rgba(4, 9, 30, 0.3), rgba(4, 9, 30, 0.3)), url(images/banner1.jpeg);
+    background-image: linear-gradient(rgba(4, 9, 30, 0.4), rgba(4, 9, 30, 0.4)), url(images/banner1.jpeg);
     background-size: cover;
     background-attachment: local;
     background-position: center;
@@ -127,55 +127,6 @@ nav{
     transform: translateY(0);
 }
 
-.josefin-sans-thin {
-  font-family: "Josefin Sans", serif;
-  font-optical-sizing: auto;
-  font-weight: 100;
-  font-style: normal;
-}
-
-.josefin-sans-extraLight {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 200;
-    font-style: normal;
-}
-
-.josefin-sans-light {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 300;
-    font-style: normal;
-}
-
-.josefin-sans-regular {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-}
-
-.josefin-sans-medium {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 500;
-    font-style: normal;
-}
-
-.josefin-sans-semiBold {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-}
-
-.josefin-sans-bold {
-    font-family: "Josefin Sans", serif;
-    font-optical-sizing: auto;
-    font-weight: 700;
-    font-style: normal;
-}
-
 .nav-links ul li::after{
     content: '';
     width: 0%;
@@ -205,6 +156,7 @@ nav .fa{
     left: 30%;
     transform: translate(-50%,-50%);
     text-align: left;
+    padding:20px;
 }
 
 
@@ -268,6 +220,7 @@ nav .fa{
     margin-left: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     margin-bottom: 20px;
+    border-radius: 10px;
 }
 .rcard{
     background-color: white;
@@ -277,6 +230,7 @@ nav .fa{
     margin-right: 20px;
     margin-bottom: 20px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 .rightcolumn.card{
     margin-right: 20px;
