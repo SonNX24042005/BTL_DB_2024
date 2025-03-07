@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name = "viewport" content = "with=device-with, initial-scale=1.0">
+    <title> University Website</title>
+    <link rel="stylesheet" href = "styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    
+</head>    
+<body>
+    <script src="script.js"></script>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>  
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li><a href="#">TRANG CHỦ</a></li>
+                    <li class = "dropdown">
+                        <a href="">HỌC TẬP</a>
+                        <ul class = "dropdown-menu">
+                            <li><a href="#">LỊCH THI</a></li>
+                            <li><a href="#">LỊCH HỌC</a></li>
+                            <li><a href="#">ĐIỂM THI</a></li>
+                            <li><a href="#">BẢNG ĐIỂM</a></li>
+                            <li><a href="#">ĐỒ ÁN</a></li>
+                        </ul>
+                    </li>
+                     <li class = "dropdown">
+                        <a href="">CHƯƠNG TRÌNH ĐÀO TẠO</a>
+                        <ul class = "dropdown-menu">
+                            <li><a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
+                            <li><a href="#">ĐĂNG KÍ HỌC TẬP</a></li>
+                            <li><a href="#">CHƯƠNG TRÌNH TRAO ĐỔI</a></li>
+                            <li><a href="#">HỌC BỔNG</a></li>
+                            <li><a href="#">HỌC PHÍ</a></li>
+                        </ul>
+                    </li>
+                     <li class = "dropdown">
+                        <a href="">TÀI KHOẢN</a>
+                        <ul class = "dropdown-menu">
+                            <li><a href="#">THÔNG TIN</a></li>
+                            <li><a href="#">ĐĂNG XUẤT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    <div class = "text-box">
+        <h1 style="font-size: 55px;text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6); line-height: 1.2;"> TRANG THÔNG TIN DÀNH CHO SINH VIÊN </h1>
+    </div>
+    
+    </section>
+    <section>
+        <div class="row">
+            <div class="leftcolumn">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h1 class="card-title" >SỰ KIỆN SẮP TỚI</h1>
+                                    <div id="content">
+                                        <ul class="timeline">
+                                            <li class="event">
+                                                <h3>📣 Innovation Day</h3>
+                                                <p>⏰ Thu 2, 12/08/2025</p>
+                                                <p>⛳ P402 B1</p>
+                                            </li>
+                                            <li class="event">
+                                                <h3>📣 Seminar</h3>
+                                                <p>⏰ Thu 4, 27/04/2026</p>
+                                                <p>⛳ P302 D9</p>
+                                            </li>
+                                            <li class="event">
+                                                <h3>📣 Open Day</h3>
+                                                <p>⏰ Thu 6, 27/3/2026</p>
+                                                <p>⛳ P212 C7</p>
+                                            </li>
+                                            <li class="event">
+                                                <h3>📣 Book's Day</h3>
+                                                <p>⏰ Thu 2, 21/02/2026</p>
+                                                <p>⛳ Ta Quang Buu library</p>
+                                            </li>
+                                            <li class="event">
+                                                <h3>📣 SCIC</h3>
+                                                <p>⏰ Thu 7, 31/03/2025</p>
+                                                <p>⛳ C2</p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        <div class="rightcolumn">
+                <div class="rcard">
+                    <h1 class="card-title">THÔNG TIN MỚI NHẤT</h1>
+                    <div class="f-grid">
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                        <div class="content">
+                            <h2>Cập nhật chương trình đào tạo</h2>
+                            <p class="title">Thông báo</p>
+                            <p><button class="button">Đọc ngay</button></p>
+                        </div>   
+                    </f-grid-col>
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                            <div class="content">
+                                <h2>Cập nhật chương trình đào tạo</h2>
+                                <p class="title">Thông báo</p>
+                                <p><button class="button">Đọc ngay</button></p>
+                            </div>
+                    </f-grid-col>
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                            <div class="content">
+                                <h2>Cập nhật chương trình đào tạo</h2>
+                                <p class="title">Thông báo</p>
+                                <p><button class="button">Đọc ngay</button></p>
+                            </div>
+                    </f-grid-col>
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                        <div class="content">
+                            <h2>Cập nhật chương trình đào tạo</h2>
+                            <p></p>
+                            <p class="title">Thông báo</p>
+                            <p></p>
+                            <p><button class="button">Đọc ngay</button></p>
+                        </div>   
+                    </f-grid-col>
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                            <div class="content">
+                                <h2>Cập nhật chương trình đào tạo</h2>
+                                <p class="title">Thông báo</p>
+                                <p><button class="button">Đọc ngay</button></p>
+                            </div>
+                    </f-grid-col>
+                    <f-grid-col>
+                        <img src="images/2025ProgramUpdate.jpg" style="width: 100%">
+                            <div class="content">
+                                <h2>Cập nhật chương trình đào tạo</h2>
+                                <p class="title">Thông báo</p>
+                                <p><button class="button">Đọc ngay</button></p>
+                            </div>
+                    </f-grid-col>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+    </section>
+    <footer>
+    <img src="images/footer.jpeg" style="width: 100%;">
+</footer>
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+    </script>
+    
+    
+</body>
+    
+</html>
