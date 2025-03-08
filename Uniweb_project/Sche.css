@@ -30,8 +30,9 @@
         .header {
             width: 100%;
             background-color: #f0f2f5;
+            
         }
-
+    
         nav img {
             width: 120px !important;
             height: auto !important; 
@@ -40,7 +41,7 @@
 
         nav{
             display: flex;
-            position: -webkit-sticky;
+            position: sticky;
             padding: 15px 6%;
             justify-content: space-between;
             align-items: center;
@@ -86,9 +87,8 @@
             position: absolute;
             top: 100%;
             left: 0;
-            right:auto;
+            right: auto;
             background: rgba(30, 30, 30, 0.95); 
-            display: block;
             width: max-content;
             padding: 5px 0; 
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -97,6 +97,7 @@
             opacity: 0;
             transform: translateY(-10px);
             transition: opacity 0.3s ease, transform 0.3s ease;
+            display: block;
         }
 
         .dropdown-menu li {
@@ -104,7 +105,7 @@
             padding: 5px 0;
             transition: background 0.3s ease-in-out;
             text-align: left;
-            display:block !important;
+            display: block !important;
         }
 
         .dropdown-menu li a {
@@ -113,33 +114,42 @@
             padding: 10px;
             transition: 0.3s ease-in-out;
         }
+
         .dropdown-menu ul {
             flex-direction: column !important;
             margin: 0;
             padding: 0;
         }
+
         .dropdown-menu li a:hover {
             background: #cc1628;
-            display:block;
-        }
-
-        /* Hiển thị menu khi hover */
-        .dropdown:hover .dropdown-menu {
             display: block;
         }
 
-        /* Hiệu ứng trượt mượt */
-        .dropdown-menu {
-            opacity: 0;
-            transform: translateY(-10px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
+        /* Xóa bỏ hiệu ứng hover */
+        /* 
         .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        */
+
+        /* Hiệu ứng hiển thị khi active */
+        .dropdown-menu.active {
+            display: block;
             opacity: 1;
             transform: translateY(0);
         }
 
+        .dropdown-toggle {
+            display: block;
+            padding: 0;
+            cursor: pointer;
+            z-index: 1;
+        }
+
+        .dropdown-toggle * {
+            pointer-events: none;
+        }
         /* Schedule Container */
         .schedule-container {
             background-color: var(--white);

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thời Khóa Biểu Sinh Viên</title>
-</head>
+    </head>
 <body>
     <section class="header">
         <nav>
@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="#">TRANG CHỦ</a></li>
                     <li class="dropdown">
-                        <a href="#">HỌC TẬP</a>
+                        <a href="#" class = "dropdown-toggle" data-toggle = "dropdown">HỌC TẬP</a>
                         <ul class="dropdown-menu">
                             <li><a href="Schedule.html">THỜI KHÓA BIỂU</a></li>
                             <li><a href="#">BẢNG ĐIỂM</a></li>
@@ -22,7 +22,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a>
+                        <a href="#" class = "dropdown-toggle" data-toggle="dropdown">CHƯƠNG TRÌNH ĐÀO TẠO</a>
                         <ul class="dropdown-menu">
                             <li><a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
                             <li><a href="#">ĐĂNG KÍ HỌC TẬP</a></li>
@@ -32,7 +32,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#">TÀI KHOẢN</a>
+                        <a href="#" class ="dropdown-toggle" data-toggle="dropdown">TÀI KHOẢN</a>
                         <ul class="dropdown-menu">
                             <li><a href="StudentInform.html">THÔNG TIN</a></li>
                             <li><a href="#">ĐĂNG XUẤT</a></li>
@@ -418,21 +418,56 @@
             });
         });
         
-        // Script để xử lý hiệu ứng dropdown menu trên thiết bị di động
         document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý cho các dropdown menus
             const dropdowns = document.querySelectorAll('.dropdown');
-            
             if (window.innerWidth <= 768) {
                 dropdowns.forEach(dropdown => {
                     dropdown.addEventListener('click', function(e) {
                         this.querySelector('.dropdown-menu').style.display = 
                             this.querySelector('.dropdown-menu').style.display === 'block' ? 'none' : 'block';
-                        e.preventDefault();
+                                e.preventDefault();
                     });
                 });
             }
+            // Thêm sự kiện click cho từng dropdown
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+
+                // Sự kiện khi click vào toggle
+                toggle.addEventListener('click', function(event) {
+                    // Ngăn chặn hành vi mặc định của thẻ a
+                    event.preventDefault();
+                    // Dừng sự kiện lan truyền
+                    event.stopPropagation();
+
+                    // Đóng tất cả dropdown khác
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.querySelector('.dropdown-menu').classList.remove('active');
+                        }
+                    });
+
+                    // Toggle dropdown hiện tại
+                    menu.classList.toggle('active');
+                });
+            });
+
+            // Đóng dropdown khi click bên ngoài
+            document.addEventListener('click', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.querySelector('.dropdown-menu').classList.remove('active');
+                });
+            });
+
+            // Ngăn menu đóng khi click bên trong menu
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            });
         });
-        
         // Xử lý nút Xem để cập nhật thời gian hiển thị
         document.getElementById('view-btn').addEventListener('click', function() {
             const viewType = document.getElementById('view-type').value;
