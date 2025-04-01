@@ -1,7 +1,7 @@
 /* jshint browser: true */
 /* jshint esversion: 6 */
 
-let lastScrollY = window.scrollY;
+/*let lastScrollY = window.scrollY;
 
 window.addEventListener("scroll", function() {
     var navbar = document.querySelector("nav");
@@ -16,4 +16,4 @@ window.addEventListener("scroll", function() {
 
     lastScrollY = window.scrollY;
 });
-
+*/
