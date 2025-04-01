@@ -5,41 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Sinh Viên</title>
     <style>
-        :root {
-            --primary-color: rgb(186, 28, 28);
-            --secondary-color: #2980b9;
-            --accent-color: #f39c12;
-            --text-color: #333;
-            --light-gray: #f5f5f5;
-            --dark-gray: #e0e0e0;
-            --white: #ffffff;
-            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            --border-radius: 8px;
-        }
+:root {
+    --primary-color: rgb(186, 28, 28);
+    --secondary-color: #2980b9;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --dark-gray: #e0e0e0;
+    --white: #ffffff;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 
-        body {
-            background-color: #f0f2f5;
-        }
+body {
+    background-color: #f0f2f5;
+}
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
 
-        .header {
-            width: 100%;
-            background-color: #f0f2f5;
-        }
-
-        
+.header {
+    width: 100%;
+    background-color: #f0f2f5;
+}
+   
 nav img {
     width: 120px !important;
     height: auto !important; 
@@ -153,206 +152,206 @@ nav{
     transform: translateY(0);
 }
 
-        .profile-container {
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            box-shadow: var(--box-shadow);
-            display: flex;
-            overflow: hidden;
-            margin: 30px 0;
-        }
+.profile-container {
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    display: flex;
+    overflow: hidden;
+    margin: 30px 0;
+}
 
-        .profile-sidebar {
-            width: 300px;
-            background-color: var(--light-gray);
-            padding: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            border-right: 1px solid var(--dark-gray);
-        }
+.profile-sidebar {
+    width: 300px;
+    background-color: var(--light-gray);
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid var(--dark-gray);
+}
 
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid var(--white);
-            box-shadow: var(--box-shadow);
-            margin-bottom: 20px;
-        }
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--white);
+    box-shadow: var(--box-shadow);
+    margin-bottom: 20px;
+}
 
-        .student-name {
-            font-size: 22px;
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 10px;
-        }
+.student-name {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 10px;
+}
 
-        .student-id {
-            font-size: 16px;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
+.student-id {
+    font-size: 16px;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
 
-        .quick-stats {
-            width: 100%;
-            background-color: var(--white);
-            border-radius: var(--border-radius);
-            padding: 15px;
-            box-shadow: var(--box-shadow);
-        }
+.quick-stats {
+    width: 100%;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    padding: 15px;
+    box-shadow: var(--box-shadow);
+}
 
-        .stat-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid var(--dark-gray);
-        }
+.stat-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--dark-gray);
+}
 
-        .stat-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
+.stat-item:last-child {
+    margin-bottom: 0;
+    padding-bottom: 0;
+    border-bottom: none;
+}
 
-        .stat-label {
-            font-weight: bold;
-        }
+.stat-label {
+    font-weight: bold;
+}
 
-        .stat-value {
-            font-weight: bold;
-            color: var(--primary-color);
-        }
+.stat-value {
+    font-weight: bold;
+    color: var(--primary-color);
+}
 
-        .profile-content {
-            flex: 1;
-            padding: 30px;
-        }
+.profile-content {
+    flex: 1;
+    padding: 30px;
+}
 
-        .section-title {
-            font-size: 20px;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid var(--primary-color);
-            color: var(--primary-color);
-        }
+.section-title {
+    font-size: 20px;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--primary-color);
+}
 
-        .info-card {
-            background-color: var(--light-gray);
-            border-radius: var(--border-radius);
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: var(--box-shadow);
-        }
+.info-card {
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: var(--box-shadow);
+}
 
-        .info-row {
-            display: flex;
-            margin-bottom: 15px;
-        }
+.info-row {
+    display: flex;
+    margin-bottom: 15px;
+}
 
-        .info-label {
-            width: 40%;
-            font-weight: bold;
-        }
+.info-label {
+    width: 40%;
+    font-weight: bold;
+}
 
-        .info-value {
-            width: 60%;
-        }
+.info-value {
+    width: 60%;
+}
 
-        .highlight {
-            font-weight: bold;
-            color: var(--accent-color);
-        }
+.highlight {
+    font-weight: bold;
+    color: var(--accent-color);
+}
 
-        .progress-container {
-            margin-top: 5px;
-            width: 100%;
-            background-color: var(--dark-gray);
-            border-radius: 10px;
-            height: 8px;
-        }
+.progress-container {
+    margin-top: 5px;
+    width: 100%;
+    background-color: var(--dark-gray);
+    border-radius: 10px;
+    height: 8px;
+}
 
-        .progress-bar {
-            height: 100%;
-            border-radius: 10px;
-            background-color: var(--accent-color);
-        }
+.progress-bar {
+    height: 100%;
+    border-radius: 10px;
+    background-color: var(--accent-color);
+}
 
-        .additional-info {
-            margin-top: 20px;
-        }
+.additional-info {
+    margin-top: 20px;
+}
 
-        footer {
-            color: var(--white);
-            text-align: center;
-            padding-top: 15px;
-            margin-top: 30px;
-            border-radius: var(--border-radius);
-        }
+footer {
+    color: var(--white);
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 30px;
+    border-radius: var(--border-radius);
+}
 
-        /* Mobile Responsive */
-        @media (max-width: 768px) {
-            .profile-container {
-                flex-direction: column;
-            }
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
 
-            .profile-sidebar {
-                width: 100%;
-                border-right: none;
-                border-bottom: 1px solid var(--dark-gray);
-            }
-            
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .nav-links {
-                width: 100%;
-                text-align: left;
-                margin-top: 15px;
-            }
-            
-            .nav-links ul li {
-                display: block;
-                margin: 10px 0;
-            }
-            
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                width: 100%;
-                box-shadow: none;
-                background: rgba(50, 50, 50, 0.9);
-                display: none;
-            }
-            
-           /* .dropdown:hover .dropdown-menu {
-                display: block;
-            }*/
-            .dropdown-menu.active {
-                display: block;
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* Animation for hover effects */
-        .nav-links ul li a:hover {
-            color: white;
-            transition: 0.3s;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-3px);
-            transition: transform 0.3s ease;
-        }
-    </style>
+    .profile-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        width: 100%;
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    .nav-links ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        background: rgba(50, 50, 50, 0.9);
+        display: none;
+    }
+
+   /* .dropdown:hover .dropdown-menu {
+        display: block;
+    }*/
+    .dropdown-menu.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation for hover effects */
+.nav-links ul li a:hover {
+    color: white;
+    transition: 0.3s;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    transition: transform 0.3s ease;
+}
+</style>
 </head>
 <body>
     <section class="header">
@@ -360,19 +359,19 @@ nav{
             <a href="index.html"><img src="images/logo.png" alt="Logo trường"></a>  
             <div class="nav-links" id="navLinks">
                 <ul>
-                    <li><a href="#">TRANG CHỦ</a></li>
+                    <li><a href="index.html">TRANG CHỦ</a></li>
                     <li class="dropdown">
                         <a href="#">HỌC TẬP</a>
                         <ul class="dropdown-menu">
                             <li><a href="Schedule.html">THỜI KHÓA BIỂU</a></li>
-                            <li><a href="#">BẢNG ĐIỂM</a></li>
-                            <li><a href="#">ĐỒ ÁN</a></li>
+                            <li><a href="Grade.html">BẢNG ĐIỂM</a></li>
+                            <li><a href="DoAn.html">ĐỒ ÁN</a></li>
                         </ul>
                     </li>
                     <li class="dropdown">
                         <a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
+                            <li><a href="CTDT.html">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
                             <li><a href="#">ĐĂNG KÍ HỌC TẬP</a></li>
                             <li><a href="#">CHƯƠNG TRÌNH TRAO ĐỔI</a></li>
                             <li><a href="#">HỌC BỔNG</a></li>
