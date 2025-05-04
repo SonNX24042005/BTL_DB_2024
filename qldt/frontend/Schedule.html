@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <link rel="stylesheet" href = "Sche.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thời Khóa Biểu Sinh Viên</title>
+    </head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="index.html"><img src="images/logo.png" alt="Logo trường"></a>  
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="index.html">TRANG CHỦ</a></li>
+                    <li class="dropdown">
+                        <a href="#" class = "dropdown-toggle" data-toggle = "dropdown">HỌC TẬP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="Schedule.html">THỜI KHÓA BIỂU</a></li>
+                            <li><a href="Grade.html">BẢNG ĐIỂM</a></li>
+                            <li><a href="DoAn.html">ĐỒ ÁN</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class = "dropdown-toggle" data-toggle="dropdown">CHƯƠNG TRÌNH ĐÀO TẠO</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="CTDT.html">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
+                            <li><a href="ĐKHT.html">ĐĂNG KÍ HỌC TẬP</a></li>
+                            <li><a href="CTTD.html">CHƯƠNG TRÌNH TRAO ĐỔI</a></li>
+                            <li><a href="HB.html">HỌC BỔNG</a></li>
+                            
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class ="dropdown-toggle" data-toggle="dropdown">TÀI KHOẢN</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="StudentInform.html">THÔNG TIN</a></li>
+                            <li><a href="ByeBye.html">ĐĂNG XUẤT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+    <div class="container">
+        <div class="schedule-container">
+            <div class="schedule-header">
+                <div class="schedule-title">Thời Khóa Biểu Học Tập</div>
+                <div class="schedule-filters">
+                    <div class="filter-group">
+                        <label for="view-type">Xem theo:</label>
+                        <select id="view-type">
+                            <option value="week">Tuần</option>
+                            <!--<option value="month">Tháng</option>-->
+                        </select>
+                    </div>
+                    <div class="filter-group">
+                        <label for="week-select">Tuần:</label>
+                        <select id="week-select">
+                            <option value="4">Tuần 4 (03/03 - 09/03/2025)</option>
+                            <option value="5" selected>Tuần 5 (10/03 - 16/03/2025)</option>
+                            <option value="6">Tuần 6 (17/03 - 23/03/2025)</option>
+                            <option value="7">Tuần 7 (24/03 - 30/03/2025)</option>
+                        </select>
+                    </div>
+                    <div class="filter-group" id="month-filter" style="display: none;">
+                        <label for="month-select">Tháng:</label>
+                        <select id="month-select">
+                            <option value="3" selected>Tháng 3/2025</option>
+                            <option value="4">Tháng 4/2025</option>
+                            <option value="5">Tháng 5/2025</option>
+                        </select>
+                    </div>
+                    <button id="view-btn">Xem</button>
+                </div>
+            </div>
+            
+            <div class="schedule-tabs">
+                <div class="tab active" data-tab="class">Lịch học</div>
+                <div class="tab" data-tab="exam">Lịch thi</div>
+            </div>
+            
+            <div class="schedule-content">
+                <div id="class-schedule">
+                    <div class="current-period">Tuần 5: 10/03/2025 - 16/03/2025</div>
+                    
+                    <table class="timetable">
+                        <thead>
+                            <tr>
+                                <th class="time-cell">Giờ</th>
+                                <th>Thứ 2<br>10/03</th>
+                                <th>Thứ 3<br>11/03</th>
+                                <th>Thứ 4<br>12/03</th>
+                                <th>Thứ 5<br>13/03</th>
+                                <th>Thứ 6<br>14/03</th>
+                                <th>Thứ 7<br>15/03</th>
+                                <th>Chủ nhật<br>16/03</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="time-cell">6:45 - 8:10</td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Lập trình C</div>
+                                        <div class="course-info">IT1142 - 1212121</div>
+                                        <div class="course-location">Phòng B1-303</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Cơ sở dữ liệu</div>
+                                        <div class="course-info">IT2021 - 3323232</div>
+                                        <div class="course-location">Phòng B1-401</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">8:20 - 10:05</td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Lập trình nhúng</div>
+                                        <div class="course-info">IT3142 - 878787</div>
+                                        <div class="course-location">Phòng B1-303</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Cấu kiện điện tử</div>
+                                        <div class="course-info">ET1827 - 746532</div>
+                                        <div class="course-location">Phòng B1-401</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">10:15 - 11:40</td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Xác suất thống kê</div>
+                                        <div class="course-info">MI2023 - 932633</div>
+                                        <div class="course-location">Phòng D9-403</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Cấu trúc dữ liệu</div>
+                                        <div class="course-info">IT1103 - 454543</div>
+                                        <div class="course-location">Phòng B1-405</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Tiếng Nhật 7</div>
+                                        <div class="course-info">JP1002 - J10</div>
+                                        <div class="course-location">Phòng C7-201</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">13:00 - 15:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lab">
+                                        <div class="course-name">Thực hành Lập trình C</div>
+                                        <div class="course-info">IT1142 - 192832</div>
+                                        <div class="course-location">Phòng Lab B1-204</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lab">
+                                        <div class="course-name">Thực hành Cơ sở dữ liệu</div>
+                                        <div class="course-info">IT2021 - 102932</div>
+                                        <div class="course-location">Phòng Lab B1-501</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">15:00 - 17:30</td>
+                                <td>
+                                    <div class="course-item course-lecture">
+                                        <div class="course-name">Tiếng Anh chuyên ngành</div>
+                                        <div class="course-info">EN2103 - 123455</div>
+                                        <div class="course-location">Phòng B1-402</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td>
+                                    <div class="course-item course-lab">
+                                        <div class="course-name">Thực hành Cấu trúc dữ liệu</div>
+                                        <div class="course-info">IT1103 - 123455</div>
+                                        <div class="course-location">Phòng Lab B1-303</div>
+                                    </div>
+                                </td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class="time-cell">18:30 - 20:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div id="exam-schedule" class="exam-schedule">
+                    <div class="exam-title">Lịch Thi Giữa Kỳ 2 Năm Học 2024-2025</div>
+                    
+                        <table class="exam-table">
+                            <thead>
+                                <tr>
+                                    <th>STT</th>
+                                    <th>Mã môn</th>
+                                    <th>Tên môn học</th>
+                                    <th>Ngày thi</th>
+                                    <th>Giờ thi</th>
+                                    <th>Phòng thi</th>
+                                    <th>Hình thức</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>IT1142</td>
+                                    <td>Lập trình C</td>
+                                    <td class="exam-date">23/04/2025</td>
+                                    <td>8:00 - 10:00</td>
+                                    <td>B1-305</td>
+                                    <td>Thực hành</td>
+                                </tr>
+                                <tr>
+                                    <td>2</td>
+                                    <td>IT2021</td>
+                                    <td>Cơ sở dữ liệu</td>
+                                    <td class="exam-date">25/04/2025</td>
+                                    <td>13:30 - 15:30</td>
+                                    <td>B1-402</td>
+                                    <td>Tự luận</td>
+                                </tr>
+                                <tr>
+                                    <td>3</td>
+                                    <td>IT1103</td>
+                                    <td>Cấu trúc dữ liệu</td>
+                                    <td class="exam-date">28/04/2025</td>
+                                    <td>7:30 - 9:30</td>
+                                    <td>C2-303</td>
+                                    <td>Trắc nghiệm + Tự luận</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>MI1213</td>
+                                    <td>Xác suất thống kê</td>
+                                    <td class="exam-date">02/05/2025</td>
+                                    <td>13:00 - 15:00</td>
+                                    <td>B1-501</td>
+                                    <td>Tự luận</td>
+                                </tr>
+                                <tr>
+                                    <td>5</td>
+                                    <td>JP1002</td>
+                                    <td>Tiếng Nhật 7</td>
+                                    <td class="exam-date">05/05/2025</td>
+                                    <td>9:00 - 11:00</td>
+                                    <td>C7-201</td>
+                                    <td>Trắc nghiệm + Vấn đáp</td>
+                                </tr>
+                                <tr>
+                                    <td>6</td>
+                                    <td>EN2103</td>
+                                    <td>Tiếng Anh chuyên ngành</td>
+                                    <td class="exam-date">08/05/2025</td>
+                                    <td>15:00 - 17:00</td>
+                                    <td>C7-403</td>
+                                    <td>Trắc nghiệm</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    <div class="exam-title">Lịch Thi Cuối Kỳ 2 Năm Học 2024-2025</div>
+                    
+                    <table class="exam-table">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã môn</th>
+                                <th>Tên môn học</th>
+                                <th>Ngày thi</th>
+                                <th>Giờ thi</th>
+                                <th>Phòng thi</th>
+                                <th>Hình thức</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>IT1142</td>
+                                <td>Lập trình C</td>
+                                <td class="exam-date">23/04/2025</td>
+                                <td>8:00 - 10:00</td>
+                                <td>B1-305</td>
+                                <td>Thực hành</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>IT2021</td>
+                                <td>Cơ sở dữ liệu</td>
+                                <td class="exam-date">25/04/2025</td>
+                                <td>13:30 - 15:30</td>
+                                <td>B1-402</td>
+                                <td>Tự luận</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>IT1103</td>
+                                <td>Cấu trúc dữ liệu</td>
+                                <td class="exam-date">28/04/2025</td>
+                                <td>7:30 - 9:30</td>
+                                <td>C2-303</td>
+                                <td>Trắc nghiệm + Tự luận</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>MI1213</td>
+                                <td>Xác suất thống kê</td>
+                                <td class="exam-date">02/05/2025</td>
+                                <td>13:00 - 15:00</td>
+                                <td>B1-501</td>
+                                <td>Tự luận</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>JP1002</td>
+                                <td>Tiếng Nhật 7</td>
+                                <td class="exam-date">05/05/2025</td>
+                                <td>9:00 - 11:00</td>
+                                <td>B1-201</td>
+                                <td>Trắc nghiệm + Vấn đáp</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>EN2103</td>
+                                <td>Tiếng Anh chuyên ngành</td>
+                                <td class="exam-date">08/05/2025</td>
+                                <td>15:00 - 17:00</td>
+                                <td>C2-403</td>
+                                <td>Trắc nghiệm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <img src="images/footer.jpeg" style="width: 100%;">
+    </footer>
+
+    <script>
+        // Hiển thị phù hợp khi chọn xem theo tuần hoặc tháng
+        document.getElementById('view-type').addEventListener('change', function() {
+            const viewType = this.value;
+            const weekFilter = document.getElementById('week-select').parentElement;
+            const monthFilter = document.getElementById('month-filter');
+            
+            if (viewType === 'week') {
+                weekFilter.style.display = 'flex';
+                monthFilter.style.display = 'none';
+            } else {
+                weekFilter.style.display = 'none';
+                monthFilter.style.display = 'flex';
+            }
+        });
+        
+        // Chuyển đổi giữa lịch học và lịch thi
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Xóa class active từ tất cả các tab
+                tabs.forEach(t => t.classList.remove('active'));
+                // Thêm class active cho tab được chọn
+                this.classList.add('active');
+                
+                // Hiển thị nội dung phù hợp
+                const tabType = this.getAttribute('data-tab');
+                if (tabType === 'class') {
+                    document.getElementById('class-schedule').style.display = 'block';
+                    document.getElementById('exam-schedule').style.display = 'none';
+                } else {
+                    document.getElementById('class-schedule').style.display = 'none';
+                    document.getElementById('exam-schedule').style.display = 'block';
+                }
+            });
+        });
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xử lý cho các dropdown menus
+            const dropdowns = document.querySelectorAll('.dropdown');
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        this.querySelector('.dropdown-menu').style.display = 
+                            this.querySelector('.dropdown-menu').style.display === 'block' ? 'none' : 'block';
+                                e.preventDefault();
+                    });
+                });
+            }
+            // Thêm sự kiện click cho từng dropdown
+            dropdowns.forEach(dropdown => {
+                const toggle = dropdown.querySelector('.dropdown-toggle');
+                const menu = dropdown.querySelector('.dropdown-menu');
+
+                // Sự kiện khi click vào toggle
+                toggle.addEventListener('click', function(event) {
+                    // Ngăn chặn hành vi mặc định của thẻ a
+                    event.preventDefault();
+                    // Dừng sự kiện lan truyền
+                    event.stopPropagation();
+
+                    // Đóng tất cả dropdown khác
+                    dropdowns.forEach(otherDropdown => {
+                        if (otherDropdown !== dropdown) {
+                            otherDropdown.querySelector('.dropdown-menu').classList.remove('active');
+                        }
+                    });
+
+                    // Toggle dropdown hiện tại
+                    menu.classList.toggle('active');
+                });
+            });
+
+            // Đóng dropdown khi click bên ngoài
+            document.addEventListener('click', function() {
+                dropdowns.forEach(dropdown => {
+                    dropdown.querySelector('.dropdown-menu').classList.remove('active');
+                });
+            });
+
+            // Ngăn menu đóng khi click bên trong menu
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                menu.addEventListener('click', function(event) {
+                    event.stopPropagation();
+                });
+            });
+        });
+        // Xử lý nút Xem để cập nhật thời gian hiển thị
+        document.getElementById('view-btn').addEventListener('click', function() {
+            const viewType = document.getElementById('view-type').value;
+            let periodText = '';
+            
+            if (viewType === 'week') {
+                const weekSelect = document.getElementById('week-select');
+                const weekOption = weekSelect.options[weekSelect.selectedIndex].text;
+                periodText = weekOption;
+                document.querySelector('.current-period').textContent =  periodText;
+            } else {
+                const monthSelect = document.getElementById('month-select');
+                const monthOption = monthSelect.options[monthSelect.selectedIndex].text;
+                periodText = monthOption;
+                document.querySelector('.current-period').textContent = periodText;
+            }
+            
+            // Tại đây có thể thêm code để tải dữ liệu từ server theo tuần/tháng đã chọn
+            alert('Đã cập nhật lịch học theo ' + (viewType === 'week' ? 'tuần' : 'tháng') + ': ' + periodText);
+        });
+    </script>
+</body>
+</html>
