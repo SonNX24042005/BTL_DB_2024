@@ -5,7 +5,7 @@ BƯỚC 3: Khởi động lại máy
 BƯỚC 4: Mở Microsoft Store tìm kiếm Ubuntu 22.04 LTS (hoặc bản nào cũng được nhưng khuyết khích dùng 22.04 LTS mình đã dùng thử và không xảy ra lỗi)  
 BƯỚC 5: Nhấn cài đặt Ubuntu 22.04 LTS  
 BƯỚC 6: Mở CMD (Ấn tổ hợp phím Windows + S, gõ và chọn cmd)  
-``` wsl --set-version Ubuntu-22.04 1 ``` 
+``` wsl --set-version Ubuntu-22.04 1 ```   
 BƯỚC 7: Mở Ubuntu 22.04 LTS và làm theo hướng dẫn của Ubuntu (Ubuntu sẽ yêu cầu tạo tài khoản và mật khẩu người dùng)
 # Cài node.js phiên bản LTS
 BƯỚC 1: Mở Ubuntu 22.04 LTS  
