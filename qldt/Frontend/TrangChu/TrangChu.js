@@ -10,7 +10,7 @@ function hideMenu() {
 }
 
 // JavaScript cho tải thêm tin tức
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
     const newsGridContainer = document.getElementById('newsGridContainer');
     const loadMoreBtn = document.getElementById('loadMoreBtn');
     let currentPage = 1;
@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 // Hoặc để an toàn hơn và tránh lỗi re-render không mong muốn:
                 const newContent = document.createElement('div');
                 newContent.innerHTML = data.html;
-                while (newContent.firstChild) {
+                while(newContent.firstChild) {
                     newsGridContainer.appendChild(newContent.firstChild);
                 }
             }
@@ -60,27 +60,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Có thể ẩn nút nếu lỗi nghiêm trọng
         }
     }
-
-    fetch('/api/events') // Gọi API để lấy danh sách sự kiện
-        .then(response => response.json())
-        .then(events => {
-            const eventList = document.querySelector(".timeline");
-            if (!eventList) {
-                console.error("Không tìm thấy phần tử danh sách sự kiện (.timeline)");
-                return;
-            }
-
-            eventList.innerHTML = events.map(event => `
-                <li class="event">
-                    <a href="${event.link}" target="_blank">
-                        <h3>📣 ${event.title}</h3>
-                    </a>
-                    <p>⏰ ${event.date}</p>
-                    <p>⛳ ${event.location}</p>
-                </li>
-            `).join('');
-        })
-        .catch(error => console.error("Lỗi khi tải dữ liệu sự kiện:", error));
 
     if (loadMoreBtn && newsGridContainer) {
         loadMoreBtn.addEventListener('click', () => {
