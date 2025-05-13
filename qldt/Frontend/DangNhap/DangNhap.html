@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng Xuất</title>
+    <title>Đăng Nhập</title>
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -13,7 +13,7 @@
             align-items: center;
             height: 100vh;
             margin: 0;
-            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('images/banner1.jpeg');
+            background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url('../images/banner1.jpeg');
             background-size: cover;
             background-attachment: fixed;
             background-position: center;
@@ -183,7 +183,53 @@
 </head>
 <body>
     <div>
-        <h2>BẠN ĐÃ ĐĂNG XUẤT KHỎI TÀI KHOẢN CỦA BẠN</h2>    
+        <h2>VUI LÒNG ĐĂNG NHẬP VÀO TÀI KHOẢN CỦA BẠN</h2>    
     </div>
+    
+    <div>
+        <button onclick="document.getElementById('id01').style.display='block'" class="login-button">Đăng nhập</button>
+    </div>
+
+    <div id="id01" class="modal">
+        <form class="modal-content animate" action="/action_page.php" method="post">
+            <div class="imgcontainer">
+                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Đóng">&times;</span>
+                <img src="images/ava.jpg" alt="Avatar" class="avatar">
+            </div>
+
+            <div class="container">
+                <label for="uname"><b>Tên đăng nhập</b></label>
+                <input type="text" placeholder="Nhập tên đăng nhập" name="uname" id="uname" required>
+
+                <label for="psw"><b>Mật khẩu</b></label>
+                <input type="password" placeholder="Nhập mật khẩu" name="psw" id="psw" required>
+                
+                <div class="forgot-password">
+                    <a href="#">Quên mật khẩu?</a>
+                </div>
+                    
+                <button type="submit">Đăng nhập</button>
+                <label>
+                    <input type="checkbox" checked="checked" name="remember"> Ghi nhớ đăng nhập
+                </label>
+            </div>
+
+            <div class="footer-container">
+                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Hủy</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Lấy phần tử modal
+        var modal = document.getElementById('id01');
+
+        // Khi người dùng nhấp vào bất kỳ đâu bên ngoài modal, đóng nó lại
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
 </body>
 </html>
