@@ -14,7 +14,7 @@
                 <ul>
                     <li><a href="../index.html">TRANG CHỦ</a></li>
                     <li class="dropdown">
-                        <a href="#">HỌC TẬP</a>
+                        <a href="#" class = "dropdown-toggle">HỌC TẬP</a>
                         <ul class="dropdown-menu">
                             <li><a href="../LichHoc/LichHoc.html">THỜI KHÓA BIỂU</a></li>
                             <li><a href="../BangDiem/BangDiem/BangDiem.html">BẢNG ĐIỂM</a></li>
@@ -22,7 +22,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a>
+                        <a href="#" class ="dropdown-toggle">CHƯƠNG TRÌNH ĐÀO TẠO</a>
                         <ul class="dropdown-menu">
                             <li><a href="../ChuongTrinhDaoTao/ChuongTrinhDaoTao.html">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
                             <li><a href="../DangKyHocTap/DangKyHocTap.html">ĐĂNG KÍ HỌC TẬP</a></li>
@@ -31,7 +31,7 @@
                         </ul>
                     </li>
                     <li class="dropdown">
-                        <a href="#">TÀI KHOẢN</a>
+                        <a href="#" class ="dropdown-toggle">TÀI KHOẢN</a>
                         <ul class="dropdown-menu">
                             <li><a href="../ThongTinSinhVien/ThongTinSinhVien.html">THÔNG TIN</a></li>
                             <li><a href="../DangXuat/DangXuat.html">ĐĂNG XUẤT</a></li>
@@ -416,19 +416,11 @@
             });
         });
         
-        document.addEventListener('DOMContentLoaded', function() {
+            document.addEventListener('DOMContentLoaded', function() {
             // Xử lý cho các dropdown menus
             const dropdowns = document.querySelectorAll('.dropdown');
-            if (window.innerWidth <= 768) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('click', function(e) {
-                        this.querySelector('.dropdown-menu').style.display = 
-                            this.querySelector('.dropdown-menu').style.display === 'block' ? 'none' : 'block';
-                                e.preventDefault();
-                    });
-                });
-            }
-            // Thêm sự kiện click cho từng dropdown
+
+            // Thêm sự kiện click cho từng dropdown (cho cả desktop và mobile)
             dropdowns.forEach(dropdown => {
                 const toggle = dropdown.querySelector('.dropdown-toggle');
                 const menu = dropdown.querySelector('.dropdown-menu');
