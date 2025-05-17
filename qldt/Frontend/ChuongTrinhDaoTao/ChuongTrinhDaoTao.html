@@ -1,0 +1,1159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chương trình đào tạo</title>
+<style>
+:root {
+    --primary-color: rgb(186, 28, 28);
+    --secondary-color: #2980b9;
+    --accent-color: #f39c12;
+    --text-color: #333;
+    --light-gray: #f5f5f5;
+    --dark-gray: #e0e0e0;
+    --white: #ffffff;
+    --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f0f2f5;
+}
+
+
+.header {
+    width: 100%;
+    background-color: #f0f2f5;
+}
+
+
+nav img {
+    width: 120px !important;
+    height: auto !important; 
+    margin-left: 30px;
+}
+
+
+nav{
+    display: flex;
+    position: -webkit-sticky;
+    padding: 15px 6%;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+    background-color: rgba(13, 12, 12, 0.89);
+}
+/*nav.hidden {
+    transform: translateY(-100%);
+}*/
+.nav-links{
+    flex: 1;
+    text-align: right;
+}
+
+.nav-links ul li{
+    list-style: none;
+    display: inline-block;
+    padding: 5px 10px;
+    position: relative;
+    margin-right: 15px;
+}
+
+.nav-links ul li a{
+    color:azure;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+}
+.nav-links ul li::after{
+    content: '';
+    width: 0%;
+    height: 2px;
+    background: #CC1628;
+    display: block;
+    margin: auto;
+    transition: 0.5s;
+}
+
+.nav-links ul li:hover::after{
+    width: 100%;
+}
+/* Dropdown menu chung */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right:auto;
+    background: rgba(30, 30, 30, 0.95); /* Màu tối nhưng vẫn nổi bật */
+    display: block;
+    width: max-content;
+    padding: 5px 0; /* Khoảng cách bên trong menu */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bóng đổ giúp menu nổi bật */
+    border-radius: 8px; /* Bo tròn góc dropdown */
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+}
+
+.dropdown-menu li {
+    list-style: none;
+    padding: 5px 0; /* Khoảng cách giữa các mục */
+    transition: background 0.3s ease-in-out;
+    text-align: left;
+    display:block !important;
+}
+
+.dropdown-menu li a {
+    display: block;
+    color: white;
+    padding: 10px;
+    transition: 0.3s ease-in-out;
+}
+.dropdown-menu ul {
+    /*display: block !important;*/
+    flex-direction: column !important;
+    /* Không sử dụng flex để tránh hàng ngang */
+    margin: 0;
+    padding: 0;
+}
+.dropdown-menu li a:hover {
+    background: #cc1628;
+    display:block;
+}
+
+/* Hiển thị menu khi hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+/* Hiệu ứng trượt mượt */
+.dropdown-menu {
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+}
+/* Animation for hover effects */
+.nav-links ul li a:hover {
+    color: white;
+    transition: 0.3s;
+}  
+.container {
+    max-width: 1200px;
+    margin: 20px 20px;
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    color: var(--primary-color);
+    text-align: left;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+
+.category-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin: 15px 0 10px 0;
+    font-size: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th {
+    background-color: #e6f0ff;
+    color: var(--primary-color);
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ccc;
+    font-weight: bold;
+}
+
+td {
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+}
+
+/*tr:nth-child(even) {
+    background-color: #f9f9f9;
+}*/
+
+tr:hover {
+    background-color: #f0f7ff;
+}
+
+.credit-sum {
+    font-weight: bold;
+    text-align: right;
+    padding: 5px 20px;
+}
+
+.grade-a {
+    background-color: rgba(167, 226, 175, 0.79);
+}
+
+.grade-b {
+    background-color: rgba(166, 218, 242, 0.81);
+}
+
+.grade-c {
+    background-color: rgba(255, 241, 204, 0.83);
+}
+
+.grade-d {
+    background-color: rgba(236, 200, 176, 0.86);
+}
+
+.grade-f {
+    background-color: #ff9393;
+}
+
+.not-taken {
+    color: #999;
+    font-style: italic;
+}
+
+footer {
+    color: var(--white);
+    text-align: center;
+    padding-top: 15px;
+    margin-top: 30px;
+    border-radius: var(--border-radius);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .profile-container {
+        flex-direction: column;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid var(--dark-gray);
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-links {
+        width: 100%;
+        text-align: left;
+        margin-top: 15px;
+    }
+
+    .nav-links ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        width: 100%;
+        box-shadow: none;
+        background: rgba(50, 50, 50, 0.9);
+        display: none;
+    }
+
+   /* .dropdown:hover .dropdown-menu {
+        display: block;
+    }*/
+    .dropdown-menu.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+</style>
+</head>
+<body>
+    <section class="header">
+        <nav>
+            <a href="../index.html"><img src="../images/logo.png" alt="Logo trường"></a>  
+            <div class="nav-links" id="navLinks">
+                <ul>
+                    <li><a href="../index.html">TRANG CHỦ</a></li>
+                    <li class="dropdown">
+                        <a href="#">HỌC TẬP</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../LichHoc/LichHoc.html">THỜI KHÓA BIỂU</a></li>
+                            <li><a href="../BangDiem/BangDiem.html">BẢNG ĐIỂM</a></li>
+                            <li><a href="../DoAn/DoAn.html">ĐỒ ÁN</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">CHƯƠNG TRÌNH ĐÀO TẠO</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../ChuongTrinhDaoTao/ChuongTrinhDaoTao.html">CHƯƠNG TRÌNH ĐÀO TẠO</a></li>
+                            <li><a href="../DangKyHocTap/DangKyHocTap.html">ĐĂNG KÍ HỌC TẬP</a></li>
+                            <li><a href="../ChuongTrinhTraoDoi/ChuongTrinhTraoDoi.html">CHƯƠNG TRÌNH TRAO ĐỔI</a></li>
+                            <li><a href="../HocBong/HocBong.html">HỌC BỔNG</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#">TÀI KHOẢN</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../ThongTinSinhVien/ThongTinSinhVien.html">THÔNG TIN</a></li>
+                            <li><a href="../DangXuat/DangXuat.html">ĐĂNG XUẤT</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <div class="container">
+        <h1>Chương trình đào tạo sinh viên</h1>
+        <!-- Khối kiến thức Toán và Khoa học cơ bản -->
+        <div class="category-header">Khối kiến thức Toán và Khoa học cơ bản (32 TC)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-a">
+                    <td>IT2000</td>
+                    <td>Nhập môn CNTT và TT</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A+</td>
+                    <td>4</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>IT3020</td>
+                    <td>Toán rời rạc</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4.0</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>IT2140</td>
+                    <td>Điện tử cho CNTT lab</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>IT3420</td>
+                    <td>Điện tử cho CNTT</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>B</td>
+                    <td>3.0</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-c">
+                    <td>IT4110</td>
+                    <td>Tính toán khoa học</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>C+</td>
+                    <td>2.5</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-c">
+                    <td>IT4172</td>
+                    <td>Xử lý tín hiệu</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>C</td>
+                    <td>2.0</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-d">
+                    <td>MI1114</td>
+                    <td>Giải tích I</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>D+</td>
+                    <td>1.5</td>
+                    <td>KTTD</td>
+                </tr>
+                <tr class="grade-d">
+                    <td>MI1124</td>
+                    <td>Giải tích II</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>D</td>
+                    <td>1.0</td>
+                    <td>KTTD</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>MI1134</td>
+                    <td>Phương trình vi phân và Chuỗi</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>KTTD</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>MI1144</td>
+                    <td>Đại số tuyến tính</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A+</td>
+                    <td>4.0</td>
+                    <td>KTTD</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>MI2021</td>
+                    <td>Xác suất thống kê</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>KTTD</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>PH1110</td>
+                    <td>Vật lý đại cương I</td>
+                    <td>2</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4.0</td>
+                    <td>VVLKT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 27/32</div>
+        
+        <!-- Cơ sở và cốt lõi ngành -->
+        <div class="category-header">Cơ sở và cốt lõi ngành (53 TC)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-a">
+                    <td>IT3011</td>
+                    <td>Cấu trúc dữ liệu và thuật toán</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>A+</td>
+                    <td>4.0</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>IT3210</td>
+                    <td>C Programming Language</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>IT3220</td>
+                    <td>C Programming (Introduction)</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>IT3230</td>
+                    <td>Lập trình C cơ bản</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>C+</td>
+                    <td>3.0</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3070</td>
+                    <td>Nguyên lý hệ điều hành</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3080</td>
+                    <td>Mạng máy tính</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3103</td>
+                    <td>Lập trình hướng đối tượng</td>
+                    <td>4</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3160</td>
+                    <td>Nhập môn Trí tuệ nhân tạo</td>
+                    <td>6</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3170</td>
+                    <td>Thuật toán ứng dụng</td>
+                    <td>5</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 8/53</div>
+        
+        <!-- Lý luận chính trị + Pháp luật đại cương -->
+        <div class="category-header">Lý luận chính trị + Pháp luật đại cương (13 TC)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-a">
+                    <td>SSH1111</td>
+                    <td>Triết học Mác - Lênin</td>
+                    <td>1</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A+</td>
+                    <td>4.0</td>
+                    <td>KML</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>EM1170</td>
+                    <td>Pháp luật đại cương</td>
+                    <td>2</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>KKTVQL</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>SSH1131</td>
+                    <td>Chủ nghĩa xã hội khoa học</td>
+                    <td>3</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>KML</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>SSH1121</td>
+                    <td>Kinh tế chính trị Mác - Lênin</td>
+                    <td>4</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>KML</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>SSH1151</td>
+                    <td>Tư tưởng Hồ Chí Minh</td>
+                    <td>5</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>B</td>
+                    <td>3.0</td>
+                    <td>KML</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>SSH1141</td>
+                    <td>Lịch sử Đảng cộng sản Việt Nam</td>
+                    <td>6</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>KML</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 9/13</div>
+        
+        <!-- Khối kiến thức bổ trợ -->
+        <div class="category-header">Khối kiến thức bổ trợ (21 TC)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-a">
+                    <td>IT2030</td>
+                    <td>Technical Writing and Presentation</td>
+                    <td>3</td>
+                    <td>3</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>ED3220</td>
+                    <td>Kỹ năng mềm</td>
+                    <td>-</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>KSPKT</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>ED3280</td>
+                    <td>Tâm lý học ứng dụng</td>
+                    <td>-</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>KSPKT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>CH2021</td>
+                    <td>Đổi mới sáng tạo và khởi nghiệp</td>
+                    <td>-</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>THKHSS</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>EM1010</td>
+                    <td>Quản trị học đại cương</td>
+                    <td>-</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>KKTVQL</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 7/12</div>
+        
+        <!-- Tiếng Nhật -->
+        <div class="category-header">Tiếng Nhật (7 TC)</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-a">
+                    <td>JP1110</td>
+                    <td>Tiếng Nhật 1</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-a">
+                    <td>JP1120</td>
+                    <td>Tiếng Nhật 2</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>A</td>
+                    <td>4</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>JP1132</td>
+                    <td>Tiếng Nhật 3</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>JP2111</td>
+                    <td>Tiếng Nhật 4</td>
+                    <td>4</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>JP2126</td>
+                    <td>Tiếng Nhật 5</td>
+                    <td>5</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 0/7</div>
+        
+        <!-- Giáo dục thể chất -->
+        <div class="category-header">Giáo dục thể chất</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-c">
+                    <td>PE1014</td>
+                    <td>Lý luận TDTT</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>C</td>
+                    <td>2</td>
+                    <td>BGDTC</td>
+                </tr>
+                <tr class="grade-d">
+                    <td>PE2401</td>
+                    <td>Bóng bàn 1</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>D+</td>
+                    <td>1.5</td>
+                    <td>BGDTC</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>PE2501</td>
+                    <td>Cầu lông 1</td>
+                    <td>3</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>BGDTC</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Gíao dục quốc phòng và an ninh-->
+        <div class="category-header">Giáo dục Quốc phòng - An ninh</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="grade-b">
+                    <td>MIL1210</td>
+                    <td>Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>KGDQP</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>MIL1220</td>
+                    <td>Công tác quốc phòng và an ninh</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>B</td>
+                    <td>3</td>
+                    <td>KGDQP</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>MIL1230</td>
+                    <td>Quân sự chung</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>B+</td>
+                    <td>3.5</td>
+                    <td>KGDQP</td>
+                </tr>
+                <tr class="grade-b">
+                    <td>MIL1240</td>
+                    <td>Kỹ thuật chiến đấu bộ binh và chiến thuật</td>
+                    <td>2</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>B</td>
+                    <td>3</td>
+                    <td>KGDQP</td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- Module định hướng 1 -->
+        <div class="category-header">Module định hướng 1</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 0/15</div>
+        <!-- Module định hướng 2 -->
+        <div class="category-header">Module định hướng 2</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+                <tr class="not-taken">
+                    <td>IT3190</td>
+                    <td>Nhập môn học máy và khai phá dữ liệu</td>
+                    <td>1</td>
+                    <td>0</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 0/15</div>
+        <!-- Thực tập công nghiệp -->
+        <div class="category-header">Thực tập công nghiệp</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="not-taken">
+                    <td>IT4948</td>
+                    <td>Thực tập công nghiệp</td>
+                    <td>7</td>
+                    <td>2</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 0/2</div>
+        
+        <!-- Đồ án tốt nghiệp -->
+        <div class="category-header">Đồ án/Khóa luận Tốt nghiệp</div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mã HP</th>
+                    <th>Tên học phần</th>
+                    <th>Kỳ học</th>
+                    <th>TC</th>
+                    <th>TC học phí</th>
+                    <th>Điểm chữ</th>
+                    <th>Điểm số</th>
+                    <th>Viện/Khoa</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="not-taken">
+                    <td>IT4125</td>
+                    <td>Đồ án tốt nghiệp</td>
+                    <td>8</td>
+                    <td>6</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>-</td>
+                    <td>TCNTT</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="credit-sum">Tổng TC đạt: 0/6</div>
+        
+        <div class="summary">
+            <h3>Tổng kết</h3>
+            <p><strong>Tổng số tín chỉ đạt được:</strong> 51 TC</p>
+            <p><strong>Tổng số tín chỉ còn phải hoàn thành:</strong> 102 TC</p>
+        </div>
+    </div>
+
+    <footer>
+    <img src="images/footer.jpeg" style="width: 100%;">
+</footer>
+
+    <script>
+        var navLinks = document.getElementById("navLinks");
+        function showMenu(){
+            navLinks.style.right="0";
+        }
+        function hideMenu(){
+            navLinks.style.right="-200px";
+        }
+        // Script để xử lý hiệu ứng dropdown menu trên thiết bị di động
+        document.addEventListener('DOMContentLoaded', function() {
+            const dropdowns = document.querySelectorAll('.dropdown');
+            
+            if (window.innerWidth <= 768) {
+                dropdowns.forEach(dropdown => {
+                    dropdown.addEventListener('click', function(e) {
+                        this.querySelector('.dropdown-menu').style.display = 
+                            this.querySelector('.dropdown-menu').style.display === 'block' ? 'none' : 'block';
+                        e.preventDefault();
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
