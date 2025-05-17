@@ -126,13 +126,6 @@ nav{
     display: block;
 }
 
-/* Xóa bỏ hiệu ứng hover */
-/* 
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
-*/
-
 /* Hiệu ứng hiển thị khi active */
 .dropdown-menu.active {
     display: block;
