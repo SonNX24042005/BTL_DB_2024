@@ -6,7 +6,7 @@ const path = require('path');
 mongoose.connect('mongodb://127.0.0.1:27017/qldt')
   .then(() => console.log('✅ Kết nối MongoDB thành công'))
   .catch(err => console.error('❌ Lỗi kết nối MongoDB:', err));
-const newsRoutes = require('./routes/newsRoutes');
+const newsRoutes = require('./routes/newsRoutesMongoDB');
 const eventRoutes = require('./routes/eventRoutesMongoDB');
 
 const app = express();
