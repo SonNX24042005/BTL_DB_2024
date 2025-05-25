@@ -4,6 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đăng Xuất</title>
+    <!-- <script>
+        // Xóa dữ liệu xác thực khỏi localStorage
+        localStorage.removeItem('authToken');
+        localStorage.removeItem('username');
+        // Bạn có thể có các mục khác trong localStorage cần xóa, ví dụ: vai trò người dùng, tùy chọn, v.v.
+
+        // Cập nhật thông báo
+        document.getElementById('logoutMessage').textContent = 'Bạn đã đăng xuất thành công. Đang chuyển hướng đến trang đăng nhập...';
+
+        // Chuyển hướng người dùng đến trang đăng nhập sau một khoảng thời gian ngắn
+        setTimeout(function() {
+            // Điều chỉnh đường dẫn này cho phù hợp với cấu trúc thư mục của bạn
+            // Nếu DangXuat.html cùng cấp với thư mục DangNhap thì dùng '../DangNhap/DangNhap.html'
+            // Nếu DangXuat.html nằm trong thư mục Frontend và DangNhap cũng vậy:
+            window.location.href = '../DangNhap/DangNhap.html'; // Giả sử DangNhap.html nằm ở thư mục cha của thư mục chứa DangXuat.html, bên trong một thư mục DangNhap
+            // Hoặc nếu bạn có một đường dẫn tuyệt đối:
+            // window.location.href = '/DangNhap/DangNhap.html';
+        }, 2500); // Chuyển hướng sau 2.5 giây
+    </script> -->
     <style>
         body {
             font-family: Arial, Helvetica, sans-serif;
@@ -186,4 +205,34 @@
         <h2>BẠN ĐÃ ĐĂNG XUẤT KHỎI TÀI KHOẢN CỦA BẠN</h2>    
     </div>
 </body>
+    <script>
+        // Đảm bảo script này chạy sau khi phần tử logoutMessage đã được tải
+        document.addEventListener('DOMContentLoaded', function() {
+            // Xóa dữ liệu xác thực khỏi localStorage
+            localStorage.removeItem('authToken');
+            localStorage.removeItem('username');
+
+            // Cập nhật thông báo cho người dùng
+            const logoutMessageElement = document.getElementById('logoutMessage');
+            if (logoutMessageElement) {
+                logoutMessageElement.textContent = 'Bạn đã đăng xuất thành công. Đang chuyển hướng đến trang đăng nhập...';
+            }
+            
+            const logoutTitleElement = document.getElementById('logoutTitle');
+            if (logoutTitleElement){
+                 logoutTitleElement.textContent = 'ĐÃ ĐĂNG XUẤT';
+            }
+
+
+            // // Chuyển hướng người dùng đến trang đăng nhập sau một khoảng thời gian ngắn
+            // setTimeout(function() {
+            //     // Đường dẫn này giả định trang DangNhap.html nằm trong thư mục DangNhap,
+            //     // và thư mục DangNhap cùng cấp với thư mục DangXuat (chứa trang này).
+            //     // Ví dụ: Frontend/DangXuat/DangXuat.html -> Frontend/DangNhap/DangNhap.html
+            //     window.location.href = '../DangNhap/DangNhap.html';
+            //     // HOẶC, nếu bạn muốn sử dụng đường dẫn tuyệt đối từ gốc web server:
+            //     // window.location.href = '/DangNhap/DangNhap.html'; // Nếu Frontend là gốc và DangNhap.html trong Frontend/DangNhap/
+            // }, 2500); // Chuyển hướng sau 2.5 giây
+        });
+    </script>
 </html>

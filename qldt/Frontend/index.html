@@ -12,7 +12,56 @@
     
 </head>    
 <body>
-    <script src="script.js"></script>
+    <script src="TrangChu.js"></script>
+    <!-- <script src="TrangChu.js"></script>
+    <script>
+        (function() {
+            const token = localStorage.getItem('authToken');
+            const username = localStorage.getItem('username');
+            const currentPath = window.location.pathname;
+
+            if (!token) {
+                // Nếu không có token và trang hiện tại không phải là trang đăng nhập
+                // hoặc các trang public khác (nếu có)
+                if (currentPath !== '/DangNhap/DangNhap.html' && currentPath !== '/DangKy.html' /* && thêm các trang public khác */) {
+                    console.log('Không có token, chuyển hướng về đăng nhập.');
+                    window.location.href = '/DangNhap/DangNhap.html'; // Hoặc trang đăng nhập của bạn
+                }
+            } else {
+                // Có token, người dùng đã đăng nhập
+                console.log(`Người dùng ${username} đã đăng nhập.`);
+                // Bạn có thể cập nhật UI ở đây, ví dụ: hiển thị tên người dùng, nút Đăng xuất
+                // Ví dụ: tìm phần tử có id="user-info" và cập nhật
+                // const userInfoElement = document.getElementById('user-info');
+                // if (userInfoElement) {
+                //    userInfoElement.textContent = `Xin chào, ${username}`;
+                // }
+
+                // Điều chỉnh menu TÀI KHOẢN
+                const taiKhoanMenu = document.querySelector('.nav-links ul li:last-child'); // Giả sử menu Tài khoản là cuối cùng
+                if (taiKhoanMenu) {
+                    const dropdownMenu = taiKhoanMenu.querySelector('.dropdown-menu');
+                    if (dropdownMenu) {
+                        // Xóa các mục cũ nếu cần và thêm "Thông tin" và "Đăng xuất"
+                        dropdownMenu.innerHTML = `
+                            <li><a href="ThongTinSinhVien/ThongTinSinhVien.html">THÔNG TIN (${username})</a></li>
+                            <li><a href="#" id="logoutButton">ĐĂNG XUẤT</a></li>
+                        `;
+                        const logoutButton = document.getElementById('logoutButton');
+                        if (logoutButton) {
+                            logoutButton.addEventListener('click', function(e) {
+                                e.preventDefault();
+                                localStorage.removeItem('authToken');
+                                localStorage.removeItem('username');
+                                // alert('Đã đăng xuất thành công.');
+                                window.location.href = '/DangXuat/DangXuat.html';
+                            });
+                        }
+                    }
+                }
+            }
+        })();
+    </script> -->
     <section class="header">
         <nav>
             <a href="index.html"><img src="images/logo.png"></a>  
