@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const userController = require('../controllers/userControllerMySQL');
+const userController = require('../controllers/userControllerMySQL.js');
 const authMiddleware = require('../middleware/authMiddleware.js');
 
 router.get('/users', userController.getAllUsers);

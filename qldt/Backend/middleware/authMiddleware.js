@@ -1,5 +1,5 @@
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = ''; // PHẢI GIỐNG VỚI KEY TRONG userController
+const JWT_SECRET = 'baf4b23099c9d35d2fb1058ffff5b24ea71ef7a3af0f935d3bb6c0fb92605d602f6c7af917cd78132dce0d67db141b62f2daea1cbafc9310aaaff428486ee830'; // PHẢI GIỐNG VỚI KEY TRONG userController
 
 module.exports = function(req, res, next) {
     const authHeader = req.header('Authorization');

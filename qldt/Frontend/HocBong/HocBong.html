@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Học Bổng</title>
+    <title>Học Bổng - Đại học Bách khoa Hà Nội</title>
     <script src="../js/authGuard.js" defer></script>
     
 <style>
@@ -31,18 +31,23 @@ body {
     min-height: 100vh;
     display : flex;
     flex-direction: column;
+    color: var(--text-color);
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     flex : 1;
+    background-color: var(--white);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
 }
 
 .header {
     width: 100%;
     background-color: #f0f2f5;
+    box-shadow: var(--box-shadow);
 }
 
 
@@ -62,9 +67,7 @@ align-items: center;
 transition: transform 0.3s ease-in-out;
 background-color: rgba(13, 12, 12, 0.89);
 }
-/*nav.hidden {
-transform: translateY(-100%);
-}*/
+
 .nav-links{
 flex: 1;
 text-align: right;
@@ -97,28 +100,29 @@ transition: 0.5s;
 .nav-links ul li:hover::after{
 width: 100%;
 }
-/* Dropdown menu chung */
+
 .dropdown-menu {
 position: absolute;
 top: 100%;
 left: 0;
 right:auto;
-background: rgba(30, 30, 30, 0.95); /* Màu tối nhưng vẫn nổi bật */
-display: block;
+background: rgba(30, 30, 30, 0.95);
+display: none;
 width: max-content;
-padding: 5px 0; /* Khoảng cách bên trong menu */
-box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bóng đổ giúp menu nổi bật */
-border-radius: 8px; /* Bo tròn góc dropdown */
+padding: 5px 0;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+border-radius: 8px;
 z-index: 1000;
 opacity: 0;
 transform: translateY(-10px);
 transition: opacity 0.3s ease, transform 0.3s ease;
+visibility: hidden;
 
 }
 
 .dropdown-menu li {
 list-style: none;
-padding: 5px 0; /* Khoảng cách giữa các mục */
+padding: 5px 0;
 transition: background 0.3s ease-in-out;
 text-align: left;
 display:block !important;
@@ -131,9 +135,7 @@ padding: 10px;
 transition: 0.3s ease-in-out;
 }
 .dropdown-menu ul {
-/*display: block !important;*/
 flex-direction: column !important;
-/* Không sử dụng flex để tránh hàng ngang */
 margin: 0;
 padding: 0;
 }
@@ -142,24 +144,15 @@ background: #cc1628;
 display:block;
 }
 
-/* Hiển thị menu khi hover */
+
 .dropdown:hover .dropdown-menu {
 display: block;
-}
-
-/* Hiệu ứng trượt mượt */
-.dropdown-menu {
-opacity: 0;
-transform: translateY(-10px);
-transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.dropdown:hover .dropdown-menu {
 opacity: 1;
 transform: translateY(0);
+visibility: visible;
 }
 
-/* Mobile Responsive */
+
 @media (max-width: 768px) {
 
     nav {
@@ -189,17 +182,15 @@ transform: translateY(0);
         display: none;
     }
 
-   /* .dropdown:hover .dropdown-menu {
+    .dropdown:hover .dropdown-menu {
+        display: none; 
+    }
+     .dropdown.active .dropdown-menu { 
         display: block;
-    }*/
-    .dropdown-menu.active {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
-/* Animation for hover effects */
+
 .nav-links ul li a:hover {
     color: white;
     transition: 0.3s;
@@ -210,9 +201,136 @@ transform: translateY(0);
     flex-direction: column;
     flex : 1;
 }
+
+h1 {
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5em;
+    border-bottom: 3px solid var(--primary-color);
+    padding-bottom: 10px;
+}
+
+.scholarship-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px; 
+}
+
+.scholarship-card {
+    background-color: var(--white);
+    border: 1px solid var(--dark-gray);
+    border-radius: var(--border-radius);
+    padding: 25px;
+    box-shadow: var(--box-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.scholarship-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.scholarship-card h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid var(--dark-gray);
+    padding-bottom: 8px;
+}
+
+.scholarship-card p {
+    font-size: 0.95em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    flex-grow: 1; 
+}
+
+.scholarship-card ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 20px;
+}
+
+.scholarship-card ul li {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+    display: flex;
+}
+.scholarship-card ul li::before {
+    content: '✓'; 
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-right: 10px;
+    font-size: 1.2em;
+    flex-shrink: 0; 
+    margin-top: 2px; 
+}
+
+.scholarship-card .btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--white) !important;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: auto;
+    border: none;
+    cursor: pointer;
+}
+
+.scholarship-card .btn:hover {
+    background-color: #a01818;
+}
+
+.load-more-container {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#loadMoreBtn {
+    padding: 12px 30px;
+    background-color: var(--secondary-color);
+    color: var(--white);
+    border: none;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: none; 
+}
+
+#loadMoreBtn:hover {
+     background-color: #20638f;
+     transform: scale(1.05);
+}
+
+#loadMoreBtn:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.loading, .error-message {
+    text-align: center;
+    font-size: 1.2em;
+    color: #555;
+    padding: 40px;
+}
+
 footer {
     text-align-last: center;
-    
+    margin-top: 20px; 
+    padding-top: 10px;
+    border-top: 1px solid var(--dark-gray);
+}
+footer img {
+    max-width: 100%; 
+    height: auto;
 }
 </style>
 </head>
@@ -253,12 +371,22 @@ footer {
     </section>
     <div class = "wrapper">
         <div class="container">
+            <h1>Thông Tin Học Bổng Đại học Bách khoa Hà Nội</h1>
+            
+            <div id="scholarshipGrid" class="scholarship-grid">
+                 <p class="loading">Đang tải dữ liệu học bổng...</p>
+            </div>
+
+            <div class="load-more-container">
+                <button id="loadMoreBtn">Hiển thị thêm</button>
+            </div>
 
         </div>
         <footer>
-            <img src="images/footer.jpeg" style="width: 100%;">
+            <img src="../images/footer.jpeg" style="width: 100%;">
         </footer>
     </div>
+
+    <script src="HoBong.js"></script>
     </body>
 </html>
-

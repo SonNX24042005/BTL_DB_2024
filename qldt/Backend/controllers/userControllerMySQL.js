@@ -1,6 +1,6 @@
 const User = require('../models/userModelMySQL');
 const jwt = require('jsonwebtoken');
-const JWT_SECRET = '';
+const JWT_SECRET = 'baf4b23099c9d35d2fb1058ffff5b24ea71ef7a3af0f935d3bb6c0fb92605d602f6c7af917cd78132dce0d67db141b62f2daea1cbafc9310aaaff428486ee830';
 exports.getAllUsers = (req, res) => {
     User.getAll((err, results) => {
         if (err) return res.status(500).send(err);
