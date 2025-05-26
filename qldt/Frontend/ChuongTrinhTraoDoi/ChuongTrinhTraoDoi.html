@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chương Trình Trao Đổi</title>
     <script src="../js/authGuard.js" defer></script>
-    
+
 <style>
 :root {
     --primary-color: rgb(186, 28, 28);
@@ -31,13 +31,17 @@ body {
     min-height: 100vh;
     display : flex;
     flex-direction: column;
+    color: var(--text-color);
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    margin: 20px auto;
     padding: 20px;
     flex : 1;
+    background-color: var(--white);
+    box-shadow: var(--box-shadow);
+    border-radius: var(--border-radius);
 }
 
 .header {
@@ -48,7 +52,7 @@ body {
 
 nav img {
 width: 120px !important;
-height: auto !important; 
+height: auto !important;
 margin-left: 30px;
 }
 
@@ -104,7 +108,7 @@ top: 100%;
 left: 0;
 right:auto;
 background: rgba(30, 30, 30, 0.95); /* Màu tối nhưng vẫn nổi bật */
-display: block;
+display: none; /* Ẩn ban đầu */
 width: max-content;
 padding: 5px 0; /* Khoảng cách bên trong menu */
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Bóng đổ giúp menu nổi bật */
@@ -113,6 +117,7 @@ z-index: 1000;
 opacity: 0;
 transform: translateY(-10px);
 transition: opacity 0.3s ease, transform 0.3s ease;
+visibility: hidden;
 
 }
 
@@ -145,19 +150,11 @@ display:block;
 /* Hiển thị menu khi hover */
 .dropdown:hover .dropdown-menu {
 display: block;
-}
-
-/* Hiệu ứng trượt mượt */
-.dropdown-menu {
-opacity: 0;
-transform: translateY(-10px);
-transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.dropdown:hover .dropdown-menu {
 opacity: 1;
 transform: translateY(0);
+visibility: visible;
 }
+
 
 /* Mobile Responsive */
 @media (max-width: 768px) {
@@ -210,16 +207,66 @@ transform: translateY(0);
     flex-direction: column;
     flex : 1;
 }
+
+h1, h2 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--dark-gray);
+    padding-bottom: 5px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.program-section {
+    margin-bottom: 30px;
+    padding: 15px;
+    background-color: var(--light-gray);
+    border-radius: var(--border-radius);
+}
+
+.program-section h2 {
+    color: var(--secondary-color);
+    border-bottom: none;
+    margin-top: 0;
+}
+
+.warning {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border: 1px solid #ffeeba;
+    border-radius: var(--border-radius);
+    margin-top: 20px;
+}
+
 footer {
     text-align-last: center;
-    
+    margin-top: 20px; /* Thêm margin để footer không dính vào nội dung */
 }
 </style>
 </head>
     <body>
     <section class="header">
         <nav>
-            <a href="../index.html"><img src="../images/logo.png" alt="Logo trường"></a>  
+            <a href="../index.html"><img src="../images/logo.png" alt="Logo trường"></a>
             <div class="nav-links" id="navLinks">
                 <ul>
                     <li><a href="../index.html">TRANG CHỦ</a></li>
@@ -253,19 +300,64 @@ footer {
     </section>
     <div class = "wrapper">
         <div class="container">
-            <p>lấdalksdkl</p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <h1>Chương Trình Trao Đổi Sinh Viên Đại Học Bách Khoa Hà Nội</h1>
+            <p>Đại học Bách khoa Hà Nội (HUST) luôn chú trọng mở rộng hợp tác quốc tế và tạo điều kiện cho sinh viên được tiếp cận với môi trường học tập, nghiên cứu tiên tiến trên thế giới. Các chương trình trao đổi sinh viên là cơ hội quý báu để sinh viên HUST trải nghiệm, học hỏi, giao lưu văn hóa và nâng cao năng lực bản thân tại các trường đại học đối tác uy tín. Đồng thời, HUST cũng chào đón sinh viên quốc tế đến học tập và nghiên cứu, góp phần làm phong phú thêm môi trường học thuật đa dạng tại trường.</p>
+
+            <div class="program-section">
+                <h2>Các Chương Trình Trao Đổi Tiêu Biểu</h2>
+                <p>HUST triển khai nhiều chương trình trao đổi đa dạng, bao gồm cả ngắn hạn và dài hạn (thường là 1 học kỳ), với các trường đại học hàng đầu khu vực và thế giới:</p>
+                <ul>
+                    <li><strong>Chương trình trao đổi trong khối 3 trường Đại học Bách khoa (Hà Nội - Đà Nẵng - TP.HCM):</strong> Sinh viên có cơ hội học tập, thực tập, nghiên cứu tại các trường thành viên, được đăng ký tối đa 15 tín chỉ mỗi kỳ.</li>
+                    <li><strong>Chương trình trao đổi Erasmus+ với các trường Đại học Châu Âu:</strong> Hợp tác với các trường như Đại học Porto (Bồ Đào Nha), Đại học Trento (Ý), Đại học VILNIUS TECH (Lithuania), mang lại cơ hội học tập và nhận học bổng tại Châu Âu.</li>
+                    <li><strong>Chương trình trao đổi với các trường Châu Á:</strong> Hợp tác với các trường danh tiếng như Viện Công nghệ Tokyo (Tokyo Tech, Nhật Bản), Đại học POSTECH (Hàn Quốc), Đại học Quốc gia Singapore (NUS).</li>
+                    <li><strong>Chương trình học bổng Canada - ASEAN (SEED):</strong> Cơ hội trao đổi và nhận học bổng tại Canada.</li>
+                    <li><strong>Chương trình AUN-ACTS:</strong> Trao đổi sinh viên trong khuôn khổ Mạng lưới các trường Đại học Đông Nam Á (AUN).</li>
+                    <li><strong>Chương trình 2+2 với các trường Hàn Quốc:</strong> Dành cho một số ngành, sinh viên học 2 năm tại HUST và 2 năm tại trường đối tác Hàn Quốc, nhận bằng của cả hai trường.</li>
+                </ul>
+            </div>
+
+            <div class="program-section">
+                <h2>Điều Kiện Tham Gia</h2>
+                <p>Để đủ điều kiện tham gia các chương trình trao đổi, sinh viên HUST cần đáp ứng các tiêu chí cơ bản sau:</p>
+                <ul>
+                    <li>Là sinh viên hệ chính quy của HUST.</li>
+                    <li>Hoàn thành ít nhất 02 học kỳ trước khi tham gia chương trình.</li>
+                    <li>Có thành tích học tập tốt (GPA thường từ 2.5/4.0 hoặc 3.0/4.0 trở lên, tùy chương trình).</li>
+                    <li>Đủ năng lực ngoại ngữ (thường là tiếng Anh, yêu cầu cụ thể tùy trường đối tác).</li>
+                    <li>Có đủ điều kiện tài chính để trang trải chi phí trong thời gian trao đổi.</li>
+                    <li>Được sự chấp thuận của Khoa/Viện chủ quản.</li>
+                    <li>Đáp ứng các yêu cầu riêng của trường đối tác và quốc gia đến trao đổi.</li>
+                </ul>
+            </div>
+
+            <div class="program-section">
+                <h2>Quy Trình Đăng Ký</h2>
+                <p>Sinh viên quan tâm cần theo dõi thông báo từ Phòng Hợp tác Đối ngoại và Khoa/Viện. Quy trình đăng ký thường bao gồm các bước:</p>
+                <ul>
+                    <li>Điền đơn đăng ký online.</li>
+                    <li>Nộp hồ sơ (CV, bảng điểm, chứng chỉ ngoại ngữ, thư bày tỏ nguyện vọng, thư giới thiệu, bản sao CCCD,...).</li>
+                    <li>Tham gia phỏng vấn (nếu có).</li>
+                    <li>Hoàn thiện thủ tục với HUST và trường đối tác.</li>
+                </ul>
+                <p><em>Sinh viên cần thường xuyên kiểm tra website của Phòng Hợp tác Đối ngoại HUST để cập nhật thông tin mới nhất về các chương trình và học bổng trao đổi.</em></p>
+            </div>
+
+             <div class="program-section">
+                <h2>Hỗ Trợ Sinh Viên Quốc Tế và Sinh Viên HUST</h2>
+                <ul>
+                    <li><strong>Chương trình Buddy:</strong> HUST có chương trình Buddy nhằm kết nối sinh viên quốc tế với sinh viên HUST, giúp các bạn dễ dàng hòa nhập với cuộc sống và môi trường học tập.</li>
+                    <li><strong>Hỗ trợ Ký túc xá/Nhà ở:</strong> Mặc dù chưa có KTX riêng cho sinh viên trao đổi quốc tế, HUST hỗ trợ tìm kiếm nơi ở phù hợp gần trường. Các trường đối tác cũng có thể hỗ trợ sinh viên HUST tìm kiếm KTX hoặc thông tin nhà ở.</li>
+                </ul>
+            </div>
+
+            <div class="warning">
+                <strong>Lưu ý quan trọng:</strong> Hiện nay có tình trạng giả mạo thông tin về các chương trình trao đổi. Sinh viên cần xác minh thông tin qua các kênh chính thức của Nhà trường (website, Phòng Hợp tác Đối ngoại) và tuyệt đối không cung cấp thông tin cá nhân hay chuyển tiền cho các đối tượng không rõ ràng.
+            </div>
+
         </div>
         <footer>
-            <img src="images/footer.jpeg" style="width: 100%;">
+            <img src="../images/footer.jpeg" style="width: 100%;">
         </footer>
     </div>
     </body>
 </html>
-

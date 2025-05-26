@@ -1,4 +1,4 @@
-// models/scholarshipModel.js
+
 const mongoose = require('mongoose');
 
 const scholarshipSchema = new mongoose.Schema({
@@ -11,7 +11,7 @@ const scholarshipSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Vui lòng nhập mô tả']
     },
-    details: [{ // Sử dụng mảng để lưu các chi tiết/điều kiện
+    details: [{ 
         key: String,
         value: String
     }],

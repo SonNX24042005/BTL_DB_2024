@@ -1,9 +1,6 @@
-// controllers/scholarshipController.js
+
 const Scholarship = require('../models/scholarshipModelMongoDB');
 
-// @desc    Lấy tất cả học bổng
-// @route   GET /api/scholarships
-// @access  Public
 const getAllScholarships = async (req, res) => {
     try {
         const scholarships = await Scholarship.find({});
@@ -20,10 +17,6 @@ const getAllScholarships = async (req, res) => {
         });
     }
 };
-
-// @desc    Lấy học bổng theo ID (Ví dụ thêm)
-// @route   GET /api/scholarships/:id
-// @access  Public
 const getScholarshipById = async (req, res) => {
     try {
         const scholarship = await Scholarship.findById(req.params.id);
@@ -45,8 +38,6 @@ const getScholarshipById = async (req, res) => {
     }
 };
 
-
-// Bạn có thể thêm các hàm khác như createScholarship, updateScholarship, deleteScholarship nếu cần
 
 module.exports = {
     getAllScholarships,

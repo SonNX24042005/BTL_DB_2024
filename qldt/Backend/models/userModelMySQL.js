@@ -13,5 +13,5 @@ const User = {
     db.query('INSERT INTO TaiKhoan (Username, MatKhau) VALUES (?, ?)', [Username, MatKhau], callback);
   }
 };
-console.log('✅ done model');
+// console.log('✅ done model');
 module.exports = User;

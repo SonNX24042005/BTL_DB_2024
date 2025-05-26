@@ -1,4 +1,3 @@
-// routes/scholarshipRoutes.js
 const express = require('express');
 const { getAllScholarships, getScholarshipById } = require('../controllers/scholarshipControllerMongoDB');
 

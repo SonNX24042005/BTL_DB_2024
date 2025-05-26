@@ -9,8 +9,8 @@ router.post('/users', userController.createUser);
 router.post('/login', userController.loginUser);
 
 router.get('/users/me', authMiddleware, (req, res) => {
-    // req.user chứa payload từ token (ví dụ: { username: '...', iat: ..., exp: ... })
-    // Bạn có thể dùng req.user.username để truy vấn DB lấy thông tin chi tiết nếu cần
+    // req.user chứa payload từ token
+    // có thể dùng req.user.username để truy vấn DB lấy thông tin chi tiết nếu cần
     User.getById(req.user.username, (err, results) => {
         if (err) return res.status(500).send(err);
         if (results.length === 0) return res.status(404).send('Không tìm thấy thông tin người dùng.');
@@ -20,5 +20,5 @@ router.get('/users/me', authMiddleware, (req, res) => {
 });
 
 
-console.log('✅ done router');
+// console.log('✅ done router');
 module.exports = router;
