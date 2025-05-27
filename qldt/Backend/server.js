@@ -11,6 +11,8 @@ const eventRoutes = require('./routes/eventRoutesMongoDB');
 const userRoutes = require('./routes/userRoutesMySQL');
 const studentRoutes = require('./routes/studentRoutes');
 const scholarshipRoutes = require('./routes/scholarshipRoutesMongoDB');
+const programRoutes = require('./routes/programRoutes');
+
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -22,6 +24,7 @@ app.use(express.json());
 app.use('/api', userRoutes); // Tiền tố /api cho các route người dùng
 app.use('/api', studentRoutes); 
 app.use('/api', scholarshipRoutes);
+app.use('/api', programRoutes);
 app.use('/api',authMiddleware, newsRoutes); // Tiền tố /api cho các route tin tức
 app.use('/api',authMiddleware, eventRoutes); // Tiền tố /api cho các route sự kiện
 

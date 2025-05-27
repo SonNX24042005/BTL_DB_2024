@@ -1,6 +1,3 @@
-create Database qldt;
-use qldt;
-
 -- MySQL dump 10.13  Distrib 8.0.42, for Win64 (x86_64)
 --
 -- Host: localhost    Database: qldt
@@ -17,6 +14,38 @@ use qldt;
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `bangdiem`
+--
+
+DROP TABLE IF EXISTS `bangdiem`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `bangdiem` (
+  `MSSV` varchar(20) NOT NULL,
+  `MaHP` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `HocKy` varchar(10) NOT NULL,
+  `DiemSo` decimal(4,2) DEFAULT NULL,
+  `DiemChu` varchar(3) DEFAULT NULL,
+  `DiemGK` decimal(4,2) DEFAULT NULL,
+  `DiemCK` decimal(4,2) DEFAULT NULL,
+  PRIMARY KEY (`MSSV`,`MaHP`,`HocKy`),
+  KEY `MaHP` (`MaHP`),
+  CONSTRAINT `bangdiem_ibfk_1` FOREIGN KEY (`MSSV`) REFERENCES `sinhvien` (`MSSV`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `bangdiem_ibfk_2` FOREIGN KEY (`MaHP`) REFERENCES `hp` (`MaHP`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `bangdiem`
+--
+
+LOCK TABLES `bangdiem` WRITE;
+/*!40000 ALTER TABLE `bangdiem` DISABLE KEYS */;
+INSERT INTO `bangdiem` VALUES ('20230089','ED3220','20251',6.65,'C+',6.50,7.00),('20230089','ED3280','20251',4.00,'D',4.00,4.00),('20230089','EM1010','20251',4.00,'D',4.00,4.00),('20230089','IT3190','20251',7.70,'B',7.50,8.00),('20230089','IT3230','20251',8.20,'B+',8.00,8.50),('20230089','IT3280','20251',7.24,'B',7.00,7.80),('20230089','IT3283','20251',8.65,'A',8.50,9.00),('20230089','IT3290','20251',6.70,'C+',6.50,7.00),('20230089','IT3292','20252',8.00,'B+',7.80,8.20),('20230089','IT3323','20252',8.50,'A',8.20,8.80),('20230089','IT3362','20252',7.50,'B',7.00,8.00),('20230089','IT3382','20252',9.00,'A',8.80,9.20),('20230089','IT3420','20252',6.75,'C+',6.00,7.50),('20230089','IT4015','20261',7.30,'B',7.50,7.00),('20230089','IT4062','20261',7.90,'B',8.00,7.80),('20230089','IT4082','20261',8.30,'B+',8.50,8.00),('20230089','IT4110','20261',9.15,'A',9.00,9.50),('20230089','IT4172','20261',7.47,'B',7.20,8.10),('20230089','JP1110','20242',8.15,'B+',8.00,8.50),('20230089','JP1120','20242',7.62,'B',7.50,7.90),('20230089','MIL1210','20242',9.08,'A',9.00,9.20),('20230089','PE1024','20242',7.00,'B',7.00,8.00),('20230089','SSH1121','20242',8.90,'A',8.80,9.00),('20236379','EM1170','20232',8.00,'B+',7.80,8.20),('20236379','IT1110E','20231',9.10,'A',9.00,9.20),('20236379','IT3010E','20232',8.38,'B+',8.20,8.80),('20236379','IT3020E','20232',7.40,'B',7.00,8.00),('20236379','IT3030E','20241',9.15,'A',9.00,9.50),('20236379','IT3052E','20241',7.56,'B',7.20,8.10),('20236379','IT3100E','20241',8.25,'B+',8.00,8.50),('20236379','IT3160E','20241',7.66,'B',7.50,7.90),('20236379','MI1111E','20231',7.75,'B',7.50,8.00),('20236379','MI1121E','20232',9.00,'A',8.80,9.20),('20236379','MI1131E','20241',8.90,'A',8.80,9.00),('20236379','MI1141E','20231',8.75,'A',8.50,9.00),('20236379','MI2020E','20232',6.75,'C+',6.00,7.50),('20236379','MIL1210','20231',7.80,'B',8.00,7.50),('20236379','MIL1220','20232',7.30,'B',7.50,7.00),('20236379','PE1014','20231',7.00,'B',7.00,8.00),('20236379','PE1015','20231',8.50,'A',8.50,8.80),('20236379','PE1024','20232',8.00,'B+',8.00,7.80),('20236379','PH1110E','20232',8.35,'B+',8.50,8.00),('20236379','SSH1111','20231',8.25,'B+',8.00,8.50);
+/*!40000 ALTER TABLE `bangdiem` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `chuongtrinh`
@@ -81,7 +110,7 @@ DROP TABLE IF EXISTS `giangvien`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `giangvien` (
-  `MaGV` varchar(6) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaGV` varchar(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `HoTenGV` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `Email` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `MaTruong` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
@@ -111,13 +140,13 @@ DROP TABLE IF EXISTS `hp`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `hp` (
-  `MaHP` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaHP` varchar(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `TenHP` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `ThoiLuong` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `HeSoGK` decimal(3,2) DEFAULT NULL,
   `TinChiHocTap` tinyint unsigned DEFAULT NULL,
   `TinChiHocPhi` tinyint unsigned DEFAULT NULL,
-  `MaNhomHP` varchar(10) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `MaNhomHP` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`MaHP`),
   KEY `MaNhomHP` (`MaNhomHP`),
   CONSTRAINT `hp_ibfk_1` FOREIGN KEY (`MaNhomHP`) REFERENCES `nhomhocphan` (`MaNhomHP`) ON DELETE SET NULL ON UPDATE CASCADE
@@ -168,7 +197,7 @@ DROP TABLE IF EXISTS `nhomhocphan`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `nhomhocphan` (
-  `MaNhomHP` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `MaNhomHP` varchar(10) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `TenNhomHP` varchar(150) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`MaNhomHP`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -274,4 +303,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-05-26  5:07:47
+-- Dump completed on 2025-05-27  9:27:17
