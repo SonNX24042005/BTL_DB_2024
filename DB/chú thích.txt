@@ -1,0 +1,51 @@
+﻿MSSV: 20234567, 20215678,202412345( 8 hoặc 9 ký tự số, bắt đầu bằng 2021/2022/2023/....)
+HoTen: nvarchar (Tiếng Việt)
+GioiTinh: Nam/Nu
+K: 1,2,..69,70..( Số có tối đa 3 chữ số)
+TrangThai: xâu 20 ký tự Tiếng Việt VD: Học,Đã Thôi Học, Không Nhập Học,..
+MaGV: Xâu ký tự 6 số vd:123456
+HocVi: Xâu ký tự Tiếng Việt vd: Tiến sĩ/PGS.TS
+MaTruong: xâu 10 ký tự vd: SOICT
+Tên Trường: xâu Tiếng việt 50 ký tự VD: Trường Công Nghệ Thông Tin và Truyền Thông
+MaChuongTrinh: xâu 10 ký tự VD: ITE6,IT1,IT2,ED3,..
+TenChuongTrinh,:xâu 50 ký tự tiếng việt VD: Công nghệ thông tin Việt - Nhật
+MaLop: xâu 15 ký tự vd: ITE6_K68_03,IT1_K69_02
+TenLop: xâu ký tự vd: Việt Nhật 03-K68
+GVCN: FK đến MaGV
+MaPhong: xâu 8 ký tự vd: B1_205,D9_401,
+TenPhong: xâu ký tự tiếng việt vd: Phòng B1-303, Phòng Tự Học,...
+SucChua: int vd: 50,100,150,...
+KieuPhong: xâu ký tự Tiếng Việt VD: Phòng Máy, Phòng Thí Nghiệm, Giảng Đường,...
+MaHP: xâu 8 ký tự vd: IT4021 ,MI1011, MI4011,...
+TenHP: Xâu ký tự Tiếng Việt vd: Xác Suất Thống Kê, Toán Rời Rạc,..
+HeSoGK: số thực <1 vd: 0.3, 0.5 ,0.4
+NhomHP: xâu ký tự Tiếng Việt vd: Cơ sở và cốt lõi ngành, Khối kiến thức Toán và Khoa học cơ bản,...
+TinChiHocTap: int
+TinChiHocPhi: int
+MaLopHP: xâu 6 số vd: 756345, 234098
+SoLuongToiDa: int
+SoLuongSV: int
+MaKyHoc: xâu 5 ký tự vd: 2023.1,2024.3,2022.2
+MaLopHPSeq: xâu kí tự ví dụ malopHp là 756891 thì có thể có là 756891.1, 756891.2, ...
+TuanBatDau: int vd: 1, 2 , 6
+TuanKetThuc int vd: 1,2, 6
+CachTuan: int: vd 1, 2
+MaLopThi: xâu 6 số vd: 123765
+NgayThi: date
+ThoiGianBatDau: time
+ThoiGianKetThuc: time
+username: xâu dạng email
+MatKhau: xâu ký tự
+ChucVu: xâu ký tự Tiếng việt vd; Trưởng Bộ Môn, Phó Bộ Môn, Giảng Viên
+LoaiDangKy: xâu ký tự VD: Online, Trực tiếp,...
+NgayDangKy: date
+ThoiDiemDangKy: time
+DiemHP: số vd: 0, 1, 3.5, 4
+DiemGK: số vd: 7.4, 8.5, 9, 9.3,..
+DiemCK: số vd: 7.4, 8.5, 9, 9.3,..
+DiemTongKet: số vd: 7.4, 8.5, 9, 9.3,..
+Tuan: int
+Thu: xâu vd: Hai, Ba, Tư, Năm,..
+GPA: số: VD: 3.21,3.67, 3.99, 4.0
+CPA: số: VD: 3.21,3.67, 3.99, 4.0
+DRL: int <100

@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const programController = require('../controllers/gradeController');
-
-// Định nghĩa route để lấy kết quả học tập theo MSSV
-router.get('/:mssv', programController.getProgramByMssv);
+const gradeController = require('../controllers/gradeController');
+router.get('/grade/:mssv', gradeController.getStudentCPA);
 
 module.exports = router;

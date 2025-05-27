@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href = "BangDiem.css">
-    <title>Bảng Điểm Sinh Viên</title>
+    <link rel="stylesheet" href="BangDiem.css"> <title>Bảng Điểm Sinh Viên</title>
     <script src="../js/authGuard.js" defer></script>
 </head>
 <body>
     <section class="header">
         <nav>
-            <a href="../index.html"><img src="../images/logo.png" alt="Logo trường"></a>  
+            <a href="../index.html"><img src="../images/logo.png" alt="Logo trường"></a>
             <div class="nav-links" id="navLinks">
                 <ul>
                     <li><a href="../index.html">TRANG CHỦ</a></li>
@@ -45,39 +44,35 @@
 
     <div class="container">
         <h2 class="section-title">Bảng Điểm Sinh Viên</h2>
-        
-        <!-- Thông tin sinh viên -->
-        <div class="student-info">
+
+        <div class="student-info" id="studentInfoSection">
             <div class="student-info-item">
-                <strong>Họ và tên:</strong> Nguyễn Văn A
+                <strong>Họ và tên:</strong> <span id="studentName">Đang tải...</span>
             </div>
             <div class="student-info-item">
-                <strong>MSSV:</strong> SV2023001
+                <strong>MSSV:</strong> <span id="studentMSSV">Đang tải...</span>
             </div>
             <div class="student-info-item">
-                <strong>Lớp:</strong> VNxx
+                <strong>Lớp:</strong> <span id="studentClass">Đang tải...</span>
             </div>
             <div class="student-info-item">
-                <strong>Ngành:</strong> Công nghệ thông tin Việt-Nhật
+                <strong>Ngành:</strong> <span id="studentProgram">Đang tải...</span>
             </div>
             <div class="student-info-item">
-                <strong>Khóa:</strong> 2023-2027
+                <strong>Khóa:</strong> <span id="studentKhoa">Đang tải...</span>
             </div>
             <div class="student-info-item">
-                <strong>CPA hiện tại:</strong> 3.75/4.0
+                <strong>CPA hiện tại:</strong> <span id="studentCPA">Đang tải...</span>
             </div>
         </div>
-        
-        <!-- Kỳ học -->
+
         <div class="semester-selector">
             <label for="semester">Chọn kỳ học:</label>
-            <select id="semester" onchange="changeSemester()">
-                <option value="2023_1">Học kỳ 1 - Năm học 2023-2024</option>
+            <select id="semester"> <option value="2023_1">Học kỳ 1 - Năm học 2023-2024</option>
                 <option value="2023_2">Học kỳ 2 - Năm học 2023-2024</option>
                 <option value="2024_1">Học kỳ 1 - Năm học 2024-2025</option>
             </select>
         </div>
-        
 
         <div id="semester-2023_1" class="semester-content">
             <table class="grades-table">
@@ -164,7 +159,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <div class="summary-section">
                 <h3 class="section-title">Tổng kết học kỳ 1 - Năm học 2023-2024</h3>
                 <div class="summary-row">
@@ -181,7 +176,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div id="semester-2023_2" class="semester-content" style="display: none;">
             <table class="grades-table">
                 <thead>
@@ -213,79 +208,13 @@
                         <td class="status-submitted">Đã gửi</td>
                         <td><button class="action-btn" onclick="openModal('Mạng máy tính', 'IT2004')">Phúc khảo</button></td>
                     </tr>
-                    <tr>
-                        <td>Cơ sở dữ liệu</td>
-                        <td>IT2005</td>
-                        <td>TS. Trần Văn H</td>
-                        <td>3</td>
-                        <td>4:6</td>
-                        <td>9.0</td>
-                        <td>8.5</td>
-                        <td>8.7</td>
-                        <td class="grade-a">A</td>
-                        <td class="status-submitted">Đã gửi</td>
-                        <td><button class="action-btn" onclick="openModal('Cơ sở dữ liệu', 'IT2005')">Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>Phát triển ứng dụng web</td>
-                        <td>IT2006</td>
-                        <td>TS. Lê Thị I</td>
-                        <td>3</td>
-                        <td>5:5</td>
-                        <td>8.5</td>
-                        <td>9.0</td>
-                        <td>8.8</td>
-                        <td class="grade-a">A</td>
-                        <td class="status-submitted">Đã gửi</td>
-                        <td><button class="action-btn" onclick="openModal('Phát triển ứng dụng web', 'IT2006')">Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>Trí tuệ nhân tạo</td>
-                        <td>IT2007</td>
-                        <td>PGS.TS Phạm Văn J</td>
-                        <td>3</td>
-                        <td>3:7</td>
-                        <td>7.5</td>
-                        <td>8.0</td>
-                        <td>7.9</td>
-                        <td class="grade-b">B</td>
-                        <td class="status-submitted">Đã gửi</td>
-                        <td><button class="action-btn" onclick="openModal('Trí tuệ nhân tạo', 'IT2007')">Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>Tiếng Nhật 2</td>
-                        <td>JP1002</td>
-                        <td>TS. Yamamoto K</td>
-                        <td>3</td>
-                        <td>5:5</td>
-                        <td>8.0</td>
-                        <td>8.5</td>
-                        <td>8.3</td>
-                        <td class="grade-a">A</td>
-                        <td class="status-submitted">Đã gửi</td>
-                        <td><button class="action-btn" onclick="openModal('Tiếng Nhật 2', 'JP1002')">Phúc khảo</button></td>
-                    </tr>
-                </tbody>
+                   </tbody>
             </table>
-            
-           
-            <div class="summary-section">
+             <div class="summary-section">
                 <h3 class="section-title">Tổng kết học kỳ 2 - Năm học 2023-2024</h3>
-                <div class="summary-row">
-                    <div class="summary-label">Tổng số tín chỉ:</div>
-                    <div class="summary-value">15</div>
                 </div>
-                <div class="summary-row">
-                    <div class="summary-label">GPA học kỳ:</div>
-                    <div class="summary-value">3.85</div>
-                </div>
-                <div class="summary-row">
-                    <div class="summary-label">Xếp loại:</div>
-                    <div class="summary-value">Xuất sắc</div>
-                </div>
-            </div>
         </div>
-        
+
         <div id="semester-2024_1" class="semester-content" style="display: none;">
             <table class="grades-table">
                 <thead>
@@ -317,81 +246,14 @@
                         <td class="status-pending">Chưa gửi</td>
                         <td><button class="action-btn" disabled>Phúc khảo</button></td>
                     </tr>
-                    <tr>
-                        <td>Phát triển ứng dụng di động</td>
-                        <td>IT3002</td>
-                        <td>TS. Trần Thị M</td>
-                        <td>3</td>
-                        <td>5:5</td>
-                        <td>9.0</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td class="status-pending">Chưa gửi</td>
-                        <td><button class="action-btn" disabled>Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>An toàn thông tin</td>
-                        <td>IT3003</td>
-                        <td>PGS.TS Lê Văn N</td>
-                        <td>3</td>
-                        <td>3:7</td>
-                        <td>8.0</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td class="status-pending">Chưa gửi</td>
-                        <td><button class="action-btn" disabled>Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>Điện toán đám mây</td>
-                        <td>IT3004</td>
-                        <td>TS. Phạm Văn O</td>
-                        <td>3</td>
-                        <td>4:6</td>
-                        <td>8.5</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td class="status-pending">Chưa gửi</td>
-                        <td><button class="action-btn" disabled>Phúc khảo</button></td>
-                    </tr>
-                    <tr>
-                        <td>Tiếng Nhật 3</td>
-                        <td>JP1003</td>
-                        <td>TS. Suzuki P</td>
-                        <td>3</td>
-                        <td>5:5</td>
-                        <td>8.5</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td>-</td>
-                        <td class="status-pending">Chưa gửi</td>
-                        <td><button class="action-btn" disabled>Phúc khảo</button></td>
-                    </tr>
-                </tbody>
+                   </tbody>
             </table>
-            
-
             <div class="summary-section">
                 <h3 class="section-title">Tổng kết học kỳ 1 - Năm học 2024-2025</h3>
-                <div class="summary-row">
-                    <div class="summary-label">Tổng số tín chỉ:</div>
-                    <div class="summary-value">15</div>
                 </div>
-                <div class="summary-row">
-                    <div class="summary-label">GPA học kỳ:</div>
-                    <div class="summary-value">Chưa có</div>
-                </div>
-                <div class="summary-row">
-                    <div class="summary-label">Xếp loại:</div>
-                    <div class="summary-value">Chưa có</div>
-                </div>
-            </div>
         </div>
     </div>
 
-    <!-- Modal Phúc khảo -->
     <div id="reviewModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -405,95 +267,9 @@
     </div>
 
     <footer>
-        <img src="images/footer.jpeg" style="width: 100%;">
+        <img src="../images/footer.jpeg" style="width: 100%;">
     </footer>
 
-    <script>
-        // Biến lưu thông tin môn học đang được phúc khảo
-        let currentSubject = '';
-        let currentSubjectCode = '';
-        
-        // Hàm đổi kỳ học
-        function changeSemester() {
-            const semester = document.getElementById('semester').value;
-            document.querySelectorAll('.semester-content').forEach(content => {
-                content.style.display = 'none';
-            });
-            document.getElementById('semester-' + semester).style.display = 'block';
-        }
-        
-        // Hàm mở modal phúc khảo
-        function openModal(subject, code) {
-            currentSubject = subject;
-            currentSubjectCode = code;
-            
-            const modalInfo = document.getElementById('modalInfo');
-            modalInfo.innerHTML = `
-                <p><strong>Môn học:</strong> ${subject}</p>
-                <p><strong>Mã môn học:</strong> ${code}</p>
-                <p><strong>Giáo viên phụ trách:</strong> ${getTeacherBySubjectCode(code)}</p>
-            `;
-            
-            document.getElementById('reviewContent').value = '';
-            document.getElementById('reviewModal').style.display = 'block';
-        }
-        
-        // Hàm đóng modal
-        function closeModal() {
-            document.getElementById('reviewModal').style.display = 'none';
-        }
-        
-        // Hàm gửi yêu cầu phúc khảo
-        function submitReview() {
-            const content = document.getElementById('reviewContent').value.trim();
-            
-            if (content === '') {
-                alert('Vui lòng nhập nội dung yêu cầu phúc khảo!');
-                return;
-            }
-            
-            // Nơi gửi dữ liệu đến server
-            alert(`Đã gửi yêu cầu phúc khảo môn ${currentSubject} thành công!`);
-            closeModal();
-        }
-        
-        // Hàm lấy tên giáo viên từ mã môn học
-        function getTeacherBySubjectCode(code) {
-            const teacherMap = {
-                'IT1005': 'PGS.TS Nguyễn Văn B',
-                'IT2001': 'TS. Trần Thị C',
-                'IT2002': 'PGS.TS Lê Văn D',
-                'IT2003': 'TS. Phạm Thị E',
-                'JP1001': 'TS. Takahashi F',
-                'IT2004': 'PGS.TS Nguyễn Văn G',
-                'IT2005': 'TS. Trần Văn H',
-                'IT2006': 'TS. Lê Thị I',
-                'IT2007': 'PGS.TS Phạm Văn J',
-                'JP1002': 'TS. Yamamoto K',
-                'IT3001': 'PGS.TS Nguyễn Văn L',
-                'IT3002': 'TS. Trần Thị M',
-                'IT3003': 'PGS.TS Lê Văn N',
-                'IT3004': 'TS. Phạm Văn O',
-                'JP1003': 'TS. Suzuki P'
-            };
-            
-            return teacherMap[code] || 'Không xác định';
-        }
-        
-        // Script xử lý dropdown menu cho mobile
-        document.addEventListener('DOMContentLoaded', function() {
-            const dropdowns = document.querySelectorAll('.dropdown');
-            
-            if (window.innerWidth <= 768) {
-                dropdowns.forEach(dropdown => {
-                    dropdown.addEventListener('click', function(e) {
-                        this.querySelector('.dropdown-menu').style.display = 
-                            this.querySelector('.dropdown-menu').style.display === 'block' ? 'none' : 'block';
-                        e.preventDefault();
-                    });
-                });
-            }
-        });
-    </script>
+    <script src="BangDiem.js" defer></script>
 </body>
 </html>

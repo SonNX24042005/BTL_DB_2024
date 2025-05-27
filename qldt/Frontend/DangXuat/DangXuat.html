@@ -224,15 +224,15 @@
             }
 
 
-            // // Chuyển hướng người dùng đến trang đăng nhập sau một khoảng thời gian ngắn
-            // setTimeout(function() {
-            //     // Đường dẫn này giả định trang DangNhap.html nằm trong thư mục DangNhap,
-            //     // và thư mục DangNhap cùng cấp với thư mục DangXuat (chứa trang này).
-            //     // Ví dụ: Frontend/DangXuat/DangXuat.html -> Frontend/DangNhap/DangNhap.html
-            //     window.location.href = '../DangNhap/DangNhap.html';
-            //     // HOẶC, nếu bạn muốn sử dụng đường dẫn tuyệt đối từ gốc web server:
-            //     // window.location.href = '/DangNhap/DangNhap.html'; // Nếu Frontend là gốc và DangNhap.html trong Frontend/DangNhap/
-            // }, 2500); // Chuyển hướng sau 2.5 giây
+            // Chuyển hướng người dùng đến trang đăng nhập sau một khoảng thời gian ngắn
+            setTimeout(function() {
+                // Đường dẫn này giả định trang DangNhap.html nằm trong thư mục DangNhap,
+                // và thư mục DangNhap cùng cấp với thư mục DangXuat (chứa trang này).
+                // Ví dụ: Frontend/DangXuat/DangXuat.html -> Frontend/DangNhap/DangNhap.html
+                window.location.href = '../DangNhap/DangNhap.html';
+                // HOẶC, nếu bạn muốn sử dụng đường dẫn tuyệt đối từ gốc web server:
+                // window.location.href = '/DangNhap/DangNhap.html'; // Nếu Frontend là gốc và DangNhap.html trong Frontend/DangNhap/
+            }, 4); // Chuyển hướng sau 2.5 giây
         });
     </script>
 </html>

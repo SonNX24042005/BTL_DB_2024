@@ -104,30 +104,30 @@ DELIMITER ;
 
 -- Sinh viên: 20230089
 INSERT INTO bangdiem (MSSV, MaHP, HocKy, DiemGK, DiemCK) VALUES
-('20230089', 'IT3190', '20251', 7.5, 8.0),  -- Lập trình mạng ứng dụng
-('20230089', 'IT3230', '20251', 8.0, 8.5),  -- Đồ án Công nghệ phần mềm
-('20230089', 'IT3280', '20251', 7.0, 7.8),  -- An toàn thông tin
-('20230089', 'IT3283', '20251', 8.5, 9.0),  -- Thực hành An toàn thông tin
-('20230089', 'IT3290', '20251', 6.5, 7.0),  -- Mạng máy tính nâng cao
-('20230089', 'ED3220', '20251', 6.5, 7.0),
+('20230089', 'IT3190', '20241', 7.5, 8.0),  -- Lập trình mạng ứng dụng
+('20230089', 'IT3230', '20241', 8.0, 8.5),  -- Đồ án Công nghệ phần mềm
+('20230089', 'IT3280', '20241', 7.0, 7.8),  -- An toàn thông tin
+('20230089', 'IT3283', '20241', 8.5, 9.0),  -- Thực hành An toàn thông tin
+('20230089', 'IT3290', '20241', 6.5, 7.0),  -- Mạng máy tính nâng cao
+('20230089', 'ED3220', '20241', 6.5, 7.0),
 
-('20230089', 'IT3292', '20252', 7.8, 8.2),  -- Thực hành Mạng máy tính nâng cao
-('20230089', 'IT3323', '20252', 8.2, 8.8),  -- Xây dựng chương trình dịch
-('20230089', 'IT3362', '20252', 7.0, 8.0),  -- Phát triển ứng dụng Web phía Client với JS Frameworks
-('20230089', 'IT3382', '20252', 8.8, 9.2),  -- Kiến trúc hướng dịch vụ (SOA) và Web Service
-('20230089', 'IT3420', '20252', 6.0, 7.5),  -- Điện tử cho Công nghệ Thông tin
+('20230089', 'IT3292', '20242', 7.8, 8.2),  -- Thực hành Mạng máy tính nâng cao
+('20230089', 'IT3323', '20242', 8.2, 8.8),  -- Xây dựng chương trình dịch
+('20230089', 'IT3362', '20242', 7.0, 8.0),  -- Phát triển ứng dụng Web phía Client với JS Frameworks
+('20230089', 'IT3382', '20242', 8.8, 9.2),  -- Kiến trúc hướng dịch vụ (SOA) và Web Service
+('20230089', 'IT3420', '20242', 6.0, 7.5),  -- Điện tử cho Công nghệ Thông tin
 
-('20230089', 'IT4015', '20261', 7.5, 7.0),  -- Kiểm thử phần mềm
-('20230089', 'IT4062', '20261', 8.0, 7.8),  -- Lập trình mạng (Thực hành Lập trình mạng)
-('20230089', 'IT4082', '20261', 8.5, 8.0),  -- Quản lý dự án phần mềm
-('20230089', 'IT4110', '20261', 9.0, 9.5),  -- Tính toán khoa học
-('20230089', 'IT4172', '20261', 7.2, 8.1),  -- Xử lý tín hiệu số
+('20230089', 'IT4015', '20231', 7.5, 7.0),  -- Kiểm thử phần mềm
+('20230089', 'IT4062', '20231', 8.0, 7.8),  -- Lập trình mạng (Thực hành Lập trình mạng)
+('20230089', 'IT4082', '20231', 8.5, 8.0),  -- Quản lý dự án phần mềm
+('20230089', 'IT4110', '20231', 9.0, 9.5),  -- Tính toán khoa học
+('20230089', 'IT4172', '20231', 7.2, 8.1),  -- Xử lý tín hiệu số
 
-('20230089', 'JP1110', '20242', 8.0, 8.5),  -- Tiếng Nhật 1 (Giả sử chưa học)
-('20230089', 'JP1120', '20242', 7.5, 7.9),  -- Tiếng Nhật 2 (Giả sử chưa học)
-('20230089', 'SSH1121', '20242', 8.8, 9.0), -- Kinh tế chính trị Mác - Lênin
-('20230089', 'MIL1210', '20242', 9.0, 9.2), -- Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam
-('20230089', 'PE1024', '20242', 7.0, 8.0);   -- Bơi lội (Giáo dục thể chất)
+('20230089', 'JP1110', '20232', 8.0, 8.5),  -- Tiếng Nhật 1 (Giả sử chưa học)
+('20230089', 'JP1120', '20232', 7.5, 7.9),  -- Tiếng Nhật 2 (Giả sử chưa học)
+('20230089', 'SSH1121', '20232', 8.8, 9.0), -- Kinh tế chính trị Mác - Lênin
+('20230089', 'MIL1210', '20232', 9.0, 9.2), -- Đường lối quốc phòng và an ninh của Đảng Cộng sản Việt Nam
+('20230089', 'PE1024', '20232', 7.0, 8.0);   -- Bơi lội (Giáo dục thể chất)
 -- Thêm dữ liệu điểm cho sinh viên: 20236379 (Lớp IT-E10-K68-05)
 INSERT INTO bangdiem (MSSV, MaHP, HocKy, DiemGK, DiemCK) VALUES
 ('20236379', 'SSH1111', '20231', 8.0, 8.5), -- Triết học Mác - Lênin (KyHocKhuyenNghi: 1 cho IT-E10)
