@@ -1,3 +1,4 @@
+create database qldt;
 USE QLDT;
 
 -- 1. XÓA BẢNG CŨ
