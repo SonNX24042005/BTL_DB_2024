@@ -18,7 +18,7 @@ CREATE TABLE `LopHocPhan` (
   `LoaiLop` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `DotMo` varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `MaQL` varchar(30) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`MaLopHP`, `BuoiSo`),
+  PRIMARY KEY (`MaLopHP`),
   KEY `idx_lophocphan_makyhoc` (`MaKyHoc`),
   KEY `idx_lophocphan_mahp` (`MaHP`),
   KEY `idx_lophocphan_maphong` (`MaPhong`),
