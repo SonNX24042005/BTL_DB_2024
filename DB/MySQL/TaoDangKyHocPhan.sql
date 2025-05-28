@@ -6,8 +6,7 @@ DROP TABLE IF EXISTS `DangKyHocPhan`;
 CREATE TABLE `DangKyHocPhan` (
   `MSSV` VARCHAR(20) NOT NULL COMMENT 'Mã số sinh viên, tham chiếu đến SinhVien.MSSV',
   `MaHP` VARCHAR(8) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Mã học phần, tham chiếu đến HP.MaHP',
-  `MaKyHoc` VARCHAR(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Mã kỳ học, tham chiếu đến KyHoc.MaKyHoc', -- << THAY ĐỔI Ở ĐÂY
-  `NgayDangKy` TIMESTAMP DEFAULT CURRENT_TIMESTAMP COMMENT 'Thời điểm sinh viên đăng ký học phần',
+  `MaKyHoc` VARCHAR(6) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL COMMENT 'Mã kỳ học, tham chiếu đến KyHoc.MaKyHoc',
   PRIMARY KEY (`MSSV`, `MaHP`, `MaKyHoc`),
   CONSTRAINT `FK_DangKyHocPhan_SinhVien` FOREIGN KEY (`MSSV`) REFERENCES `SinhVien` (`MSSV`)
     ON DELETE CASCADE ON UPDATE CASCADE,
