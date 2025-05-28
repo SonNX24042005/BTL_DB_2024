@@ -14,7 +14,7 @@ const scholarshipRoutes = require('./routes/scholarshipRoutesMongoDB');
 const programRoutes = require('./routes/programRoutes');
 const gradeRoutes = require('./routes/gradeRoutes');
 const grade1Routes = require('./routes/grade1Routes');
-
+const totalCreditRoutes = require('./routes/totalCreditRoutes');
 
 
 const app = express();
@@ -25,13 +25,14 @@ app.use(express.json());
 
 // API routes
 app.use('/api', userRoutes); // Tiền tố /api cho các route người dùng
-app.use('/api', studentRoutes); 
+app.use('/api', studentRoutes);
 app.use('/api', scholarshipRoutes);
 app.use('/api', programRoutes);
 app.use('/api', gradeRoutes);
 app.use('/api', grade1Routes);
-app.use('/api',authMiddleware, newsRoutes); // Tiền tố /api cho các route tin tức
-app.use('/api',authMiddleware, eventRoutes); // Tiền tố /api cho các route sự kiện
+app.use('/api', totalCreditRoutes); // Tiền tố /api cho các route tổng tín chỉ
+app.use('/api', authMiddleware, newsRoutes); // Tiền tố /api cho các route tin tức
+app.use('/api', authMiddleware, eventRoutes); // Tiền tố /api cho các route sự kiện
 
 
 

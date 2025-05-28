@@ -1,5 +1,4 @@
 
-
 // Hàm để định dạng ngày sinh
 function formatDate(dateString) {
     if (!dateString) return 'N/A';
@@ -11,7 +10,7 @@ function formatDate(dateString) {
 }
 
 // Script để lấy và hiển thị thông tin sinh viên
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     console.log("Script bắt đầu chạy."); // Kiểm tra script có chạy không
 
     const userEmail = localStorage.getItem('username');
@@ -34,45 +33,45 @@ document.addEventListener('DOMContentLoaded', function() {
             // 'Authorization': `Bearer ${token}`
         }
     })
-    .then(response => {
-        if (!response.ok) {
-            console.error(`HTTP error! status: ${response.status}`);
-            // Thử đọc nội dung lỗi nếu có
-            return response.json().then(err => {
-                 throw new Error(`Lỗi ${response.status}: ${err.message || 'Không thể lấy dữ liệu'}`);
+        .then(response => {
+            if (!response.ok) {
+                console.error(`HTTP error! status: ${response.status}`);
+                // Thử đọc nội dung lỗi nếu có
+                return response.json().then(err => {
+                    throw new Error(`Lỗi ${response.status}: ${err.message || 'Không thể lấy dữ liệu'}`);
+                });
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Cập nhật thông tin lên giao diện
+            document.getElementById('student-name-sidebar').textContent = data['Họ và tên'] || 'N/A';
+            document.getElementById('student-id-sidebar').textContent = `MSSV: ${data.MSSV || 'N/A'}`;
+
+            document.getElementById('student-name').textContent = data['Họ và tên'] || 'N/A';
+            document.getElementById('student-dob').textContent = formatDate(data['Ngày sinh']);
+            document.getElementById('student-gender').textContent = data['Giới tính'] || 'N/A';
+            document.getElementById('student-cccd').textContent = data.CCCD || 'N/A';
+            document.getElementById('student-email').textContent = data.Email || 'N/A';
+            document.getElementById('student-phone').textContent = data.SDT || 'N/A';
+
+            document.getElementById('student-school').textContent = data['Trường'] || 'N/A';
+            document.getElementById('student-major').textContent = data['Ngành'] || 'N/A';
+            document.getElementById('student-class').textContent = data['Lớp'] || 'N/A';
+
+            // Cập nhật các trường khác 
+        })
+        .catch(error => {
+            console.error('Lỗi khi lấy thông tin sinh viên:', error);
+            document.getElementById('student-name').textContent = 'Không thể tải thông tin';
+            document.getElementById('student-id-sidebar').textContent = `MSSV: Lỗi`;
+            // Cập nhật các trường khác thành lỗi
+            const fields = ['student-dob', 'student-gender', 'student-cccd', 'student-email', 'student-phone', 'student-school', 'student-major', 'student-class'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = 'Lỗi';
             });
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Cập nhật thông tin lên giao diện
-        document.getElementById('student-name-sidebar').textContent = data['Họ và tên'] || 'N/A';
-        document.getElementById('student-id-sidebar').textContent = `MSSV: ${data.MSSV || 'N/A'}`;
-
-        document.getElementById('student-name').textContent = data['Họ và tên'] || 'N/A';
-        document.getElementById('student-dob').textContent = formatDate(data['Ngày sinh']);
-        document.getElementById('student-gender').textContent = data['Giới tính'] || 'N/A';
-        document.getElementById('student-cccd').textContent = data.CCCD || 'N/A';
-        document.getElementById('student-email').textContent = data.Email || 'N/A';
-        document.getElementById('student-phone').textContent = data.SDT || 'N/A';
-
-        document.getElementById('student-school').textContent = data['Trường'] || 'N/A';
-        document.getElementById('student-major').textContent = data['Ngành'] || 'N/A';
-        document.getElementById('student-class').textContent = data['Lớp'] || 'N/A';
-
-        // Cập nhật các trường khác 
-    })
-    .catch(error => {
-        console.error('Lỗi khi lấy thông tin sinh viên:', error);
-        document.getElementById('student-name').textContent = 'Không thể tải thông tin';
-        document.getElementById('student-id-sidebar').textContent = `MSSV: Lỗi`;
-        // Cập nhật các trường khác thành lỗi
-        const fields = ['student-dob', 'student-gender', 'student-cccd', 'student-email', 'student-phone', 'student-school', 'student-major', 'student-class'];
-        fields.forEach(id => {
-            const el = document.getElementById(id);
-            if (el) el.textContent = 'Lỗi';
         });
-    });
 
     // Xử lý dropdown menu trên mobile
     const dropdowns = document.querySelectorAll('.dropdown');
@@ -81,11 +80,11 @@ document.addEventListener('DOMContentLoaded', function() {
             const link = dropdown.querySelector('a');
             const menu = dropdown.querySelector('.dropdown-menu');
 
-            link.addEventListener('click', function(e) {
-                 if(menu) {
+            link.addEventListener('click', function (e) {
+                if (menu) {
                     e.preventDefault();
                     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
-                 }
+                }
             });
         });
     }
@@ -93,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Xử lý đăng xuất
     const logoutButton = document.getElementById('logoutButton');
     if (logoutButton) {
-        logoutButton.addEventListener('click', function(e) {
+        logoutButton.addEventListener('click', function (e) {
             e.preventDefault();
             localStorage.removeItem('authToken');
             localStorage.removeItem('username');

@@ -17,7 +17,7 @@ function formatSemesterName(semesterCode) {
         case '2':
             termName = `Học kỳ 2 - Năm học ${year}-${year + 1}`;
             break;
-        case '3': 
+        case '3':
             termName = `Học kỳ Hè - Năm học ${year}-${year + 1}`;
             break;
         default:
@@ -251,7 +251,6 @@ function populateSemesterSelector(semesterCodes) {
 }
 
 
-
 const fetchGrades = async (mssv, token) => {
     const container = document.querySelector('.container');
     const semesterSelector = document.querySelector('.semester-selector');
@@ -264,8 +263,8 @@ const fetchGrades = async (mssv, token) => {
 
         if (response.status === 401) throw new Error('Phiên đăng nhập không hợp lệ.');
         if (!response.ok) {
-             const errData = await response.json().catch(() => ({ message: `Lỗi ${response.status}` }));
-             throw new Error(errData.message || 'Không thể tải dữ liệu điểm.');
+            const errData = await response.json().catch(() => ({ message: `Lỗi ${response.status}` }));
+            throw new Error(errData.message || 'Không thể tải dữ liệu điểm.');
         }
 
         const gradesData = await response.json();
@@ -298,15 +297,15 @@ const fetchGrades = async (mssv, token) => {
 };
 
 // --- Script xử lý khi DOM đã tải xong ---
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // --- Dropdown Logic (Cho mobile) ---
-     const dropdowns = document.querySelectorAll('.dropdown');
+    const dropdowns = document.querySelectorAll('.dropdown');
     dropdowns.forEach(dropdown => {
-        dropdown.addEventListener('click', function(e) {
+        dropdown.addEventListener('click', function (e) {
             if (window.innerWidth <= 768) {
                 const menu = this.querySelector('.dropdown-menu');
                 if (menu) {
-                     menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+                    menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
                 }
                 e.preventDefault();
             }
@@ -328,16 +327,16 @@ document.addEventListener('DOMContentLoaded', function() {
 
     if (!token || !mssv) {
         console.error('Người dùng chưa đăng nhập hoặc không tìm thấy MSSV.');
-        if(studentInfoDiv) studentInfoDiv.innerHTML = '<p style="color: red; grid-column: 1 / -1; text-align: center;">Bạn cần <a href="../DangNhap/DangNhap.html">đăng nhập</a> để xem thông tin này.</p>';
-        if(semesterSelect) semesterSelect.parentElement.style.display = 'none'; // Ẩn dropdown
+        if (studentInfoDiv) studentInfoDiv.innerHTML = '<p style="color: red; grid-column: 1 / -1; text-align: center;">Bạn cần <a href="../DangNhap/DangNhap.html">đăng nhập</a> để xem thông tin này.</p>';
+        if (semesterSelect) semesterSelect.parentElement.style.display = 'none'; // Ẩn dropdown
         return;
     }
 
     const fetchStudentInfo = async () => {
-         if (!studentNameEl || !studentMSSVEl || !studentClassEl || !studentProgramEl || !studentKhoaEl || !studentCPAEl || !studentInfoDiv) {
-             console.error("Một hoặc nhiều phần tử DOM để hiển thị thông tin sinh viên không được tìm thấy.");
-             if(studentInfoDiv) studentInfoDiv.innerHTML = '<p style="color: red; grid-column: 1 / -1; text-align: center;">Lỗi giao diện: Không thể hiển thị thông tin.</p>';
-             return;
+        if (!studentNameEl || !studentMSSVEl || !studentClassEl || !studentProgramEl || !studentKhoaEl || !studentCPAEl || !studentInfoDiv) {
+            console.error("Một hoặc nhiều phần tử DOM để hiển thị thông tin sinh viên không được tìm thấy.");
+            if (studentInfoDiv) studentInfoDiv.innerHTML = '<p style="color: red; grid-column: 1 / -1; text-align: center;">Lỗi giao diện: Không thể hiển thị thông tin.</p>';
+            return;
         }
         try {
             const response = await fetch(`/api/grade/${mssv}`, { // Giả sử đây là API lấy thông tin SV
@@ -346,8 +345,8 @@ document.addEventListener('DOMContentLoaded', function() {
             });
 
             if (response.status === 401) {
-                 localStorage.removeItem('authToken'); localStorage.removeItem('username');
-                 throw new Error('Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.');
+                localStorage.removeItem('authToken'); localStorage.removeItem('username');
+                throw new Error('Phiên đăng nhập không hợp lệ. Vui lòng đăng nhập lại.');
             }
 
             if (!response.ok) {
@@ -365,7 +364,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 studentKhoaEl.textContent = data.Khoa ? `K${data.Khoa}` : 'N/A';
                 studentCPAEl.textContent = data.CPA !== null ? `${data.CPA}/4.0` : 'Chưa có';
             } else {
-                 throw new Error('Không tìm thấy thông tin sinh viên.');
+                throw new Error('Không tìm thấy thông tin sinh viên.');
             }
 
         } catch (error) {
@@ -384,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // --- Đóng modal khi click bên ngoài ---
-window.onclick = function(event) {
+window.onclick = function (event) {
     const modal = document.getElementById('reviewModal');
     if (modal && event.target == modal) {
         closeModal();

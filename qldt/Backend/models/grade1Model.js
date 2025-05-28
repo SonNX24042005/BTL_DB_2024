@@ -1,4 +1,4 @@
-const pool = require('../config/dbMySQL'); 
+const pool = require('../config/dbMySQL');
 
 const getGradesBySemester = async (mssv) => {
     const sql = `
@@ -45,8 +45,8 @@ const getGradesBySemester = async (mssv) => {
     } catch (error) {
         // Kiểm tra xem lỗi có phải là 'is not iterable' hay không, điều này có thể chỉ ra sự cố cấu hình.
         if (error instanceof TypeError && error.message.includes("is not iterable")) {
-             console.error("Phát hiện lỗi 'is not iterable'. Điều này thường có nghĩa là 'pool.execute' không trả về promise hoặc 'pool' không được cấu hình với 'mysql2/promise'.", error);
-             throw new Error("Lỗi cấu hình cơ sở dữ liệu hoặc thực thi truy vấn. Đảm bảo 'mysql2/promise' được sử dụng.", { cause: error });
+            console.error("Phát hiện lỗi 'is not iterable'. Điều này thường có nghĩa là 'pool.execute' không trả về promise hoặc 'pool' không được cấu hình với 'mysql2/promise'.", error);
+            throw new Error("Lỗi cấu hình cơ sở dữ liệu hoặc thực thi truy vấn. Đảm bảo 'mysql2/promise' được sử dụng.", { cause: error });
         }
         console.error("Lỗi khi thực thi truy vấn getGradesBySemester:", error);
         throw error; // Ném lại lỗi để controller xử lý

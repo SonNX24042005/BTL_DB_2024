@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thông Tin Sinh Viên</title>
     <script src="../js/authGuard.js" defer></script>
-    <script src="/thongtinsinhvien.js"></script> 
-    <link rel="stylesheet" href="style.css"> <style>
+    <script src="/thongtinsinhvien.js"></script>
+    <script src="/thongtinsinhvien1.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
         /* HOẶC GIỮ NGUYÊN CSS Ở ĐÂY */
         :root {
             --primary-color: rgb(186, 28, 28);
@@ -27,48 +30,314 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
-        body { background-color: #f0f2f5; }
-        .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
-        .header { width: 100%; background-color: #f0f2f5; }
-        nav img { width: 120px !important; height: auto !important; margin-left: 30px; }
-        nav { display: flex; position: -webkit-sticky; padding: 15px 6%; justify-content: space-between; align-items: center; transition: transform 0.3s ease-in-out; background-color: rgba(13, 12, 12, 0.89); }
-        .nav-links { flex: 1; text-align: right; }
-        .nav-links ul li { list-style: none; display: inline-block; padding: 5px 10px; position: relative; margin-right: 15px; }
-        .nav-links ul li a { color: azure; text-decoration: none; font-size: 14px; font-weight: 500; }
-        .nav-links ul li::after { content: ''; width: 0%; height: 2px; background: #CC1628; display: block; margin: auto; transition: 0.5s; }
-        .nav-links ul li:hover::after { width: 100%; }
-        .dropdown-menu { position: absolute; top: 100%; left: 0; right: auto; background: rgba(30, 30, 30, 0.95); display: none; width: max-content; padding: 5px 0; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); border-radius: 8px; z-index: 1000; opacity: 0; transform: translateY(-10px); transition: opacity 0.3s ease, transform 0.3s ease; }
-        .dropdown-menu li { list-style: none; padding: 5px 0; transition: background 0.3s ease-in-out; text-align: left; display: block !important; }
-        .dropdown-menu li a { display: block; color: white; padding: 10px; transition: 0.3s ease-in-out; }
-        .dropdown-menu ul { flex-direction: column !important; margin: 0; padding: 0; }
-        .dropdown-menu li a:hover { background: #cc1628; display: block; }
-        .dropdown:hover .dropdown-menu { display: block; opacity: 1; transform: translateY(0); }
-        .profile-container { background-color: var(--white); border-radius: var(--border-radius); box-shadow: var(--box-shadow); display: flex; overflow: hidden; margin: 30px 0; }
-        .profile-sidebar { width: 300px; background-color: var(--light-gray); padding: 30px; display: flex; flex-direction: column; align-items: center; border-right: 1px solid var(--dark-gray); }
-        .profile-image { width: 200px; height: 200px; border-radius: 50%; object-fit: cover; border: 5px solid var(--white); box-shadow: var(--box-shadow); margin-bottom: 20px; }
-        .student-name { font-size: 22px; font-weight: bold; text-align: center; margin-bottom: 10px; }
-        .student-id { font-size: 16px; color: var(--primary-color); font-weight: bold; margin-bottom: 20px; }
-        .quick-stats { width: 100%; background-color: var(--white); border-radius: var(--border-radius); padding: 15px; box-shadow: var(--box-shadow); }
-        .stat-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid var(--dark-gray); }
-        .stat-item:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-        .stat-label { font-weight: bold; }
-        .stat-value { font-weight: bold; color: var(--primary-color); }
-        .profile-content { flex: 1; padding: 30px; }
-        .section-title { font-size: 20px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid var(--primary-color); color: var(--primary-color); }
-        .info-card { background-color: var(--light-gray); border-radius: var(--border-radius); padding: 20px; margin-bottom: 20px; box-shadow: var(--box-shadow); }
-        .info-row { display: flex; margin-bottom: 15px; }
-        .info-label { width: 40%; font-weight: bold; }
-        .info-value { width: 60%; }
-        .highlight { font-weight: bold; color: var(--accent-color); }
-        .progress-container { margin-top: 5px; width: 100%; background-color: var(--dark-gray); border-radius: 10px; height: 8px; }
-        .progress-bar { height: 100%; border-radius: 10px; background-color: var(--accent-color); }
-        .additional-info { margin-top: 20px; }
-        footer { color: var(--white); text-align: center; padding-top: 15px; margin-top: 30px; border-radius: var(--border-radius); }
-        @media (max-width: 768px) { .profile-container { flex-direction: column; } .profile-sidebar { width: 100%; border-right: none; border-bottom: 1px solid var(--dark-gray); } nav { flex-direction: column; align-items: flex-start; } .nav-links { width: 100%; text-align: left; margin-top: 15px; } .nav-links ul li { display: block; margin: 10px 0; } .dropdown-menu { position: static; opacity: 1; transform: none; width: 100%; box-shadow: none; background: rgba(50, 50, 50, 0.9); display: none; } .dropdown-menu.active { display: block; } }
-        .nav-links ul li a:hover { color: white; transition: 0.3s; }
-        .info-card:hover { transform: translateY(-3px); transition: transform 0.3s ease; }
+        body {
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            width: 100%;
+            background-color: #f0f2f5;
+        }
+
+        nav img {
+            width: 120px !important;
+            height: auto !important;
+            margin-left: 30px;
+        }
+
+        nav {
+            display: flex;
+            position: -webkit-sticky;
+            padding: 15px 6%;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease-in-out;
+            background-color: rgba(13, 12, 12, 0.89);
+        }
+
+        .nav-links {
+            flex: 1;
+            text-align: right;
+        }
+
+        .nav-links ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 5px 10px;
+            position: relative;
+            margin-right: 15px;
+        }
+
+        .nav-links ul li a {
+            color: azure;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .nav-links ul li::after {
+            content: '';
+            width: 0%;
+            height: 2px;
+            background: #CC1628;
+            display: block;
+            margin: auto;
+            transition: 0.5s;
+        }
+
+        .nav-links ul li:hover::after {
+            width: 100%;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: auto;
+            background: rgba(30, 30, 30, 0.95);
+            display: none;
+            width: max-content;
+            padding: 5px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            z-index: 1000;
+            opacity: 0;
+            transform: translateY(-10px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+            padding: 5px 0;
+            transition: background 0.3s ease-in-out;
+            text-align: left;
+            display: block !important;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            color: white;
+            padding: 10px;
+            transition: 0.3s ease-in-out;
+        }
+
+        .dropdown-menu ul {
+            flex-direction: column !important;
+            margin: 0;
+            padding: 0;
+        }
+
+        .dropdown-menu li a:hover {
+            background: #cc1628;
+            display: block;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .profile-container {
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            overflow: hidden;
+            margin: 30px 0;
+        }
+
+        .profile-sidebar {
+            width: 300px;
+            background-color: var(--light-gray);
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border-right: 1px solid var(--dark-gray);
+        }
+
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--white);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+        }
+
+        .student-name {
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .student-id {
+            font-size: 16px;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .quick-stats {
+            width: 100%;
+            background-color: var(--white);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--dark-gray);
+        }
+
+        .stat-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .stat-label {
+            font-weight: bold;
+        }
+
+        .stat-value {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .profile-content {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .section-title {
+            font-size: 20px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        .info-card {
+            background-color: var(--light-gray);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: var(--box-shadow);
+        }
+
+        .info-row {
+            display: flex;
+            margin-bottom: 15px;
+        }
+
+        .info-label {
+            width: 40%;
+            font-weight: bold;
+        }
+
+        .info-value {
+            width: 60%;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .progress-container {
+            margin-top: 5px;
+            width: 100%;
+            background-color: var(--dark-gray);
+            border-radius: 10px;
+            height: 8px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+            background-color: var(--accent-color);
+        }
+
+        .additional-info {
+            margin-top: 20px;
+        }
+
+        footer {
+            color: var(--white);
+            text-align: center;
+            padding-top: 15px;
+            margin-top: 30px;
+            border-radius: var(--border-radius);
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+            }
+
+            .profile-sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid var(--dark-gray);
+            }
+
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                width: 100%;
+                text-align: left;
+                margin-top: 15px;
+            }
+
+            .nav-links ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                transform: none;
+                width: 100%;
+                box-shadow: none;
+                background: rgba(50, 50, 50, 0.9);
+                display: none;
+            }
+
+            .dropdown-menu.active {
+                display: block;
+            }
+        }
+
+        .nav-links ul li a:hover {
+            color: white;
+            transition: 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-3px);
+            transition: transform 0.3s ease;
+        }
     </style>
 </head>
+
 <body>
     <section class="header">
         <nav>
@@ -206,7 +475,7 @@
                             </div>
                         </div>
                     </div>
-                     <div class="info-row">
+                    <div class="info-row">
                         <div class="info-label">Xếp loại học tập:</div>
                         <div class="info-value"><span class="highlight" id="student-rank">N/A</span></div>
                     </div>
@@ -241,6 +510,8 @@
         <img src="../images/footer.jpeg" style="width: 100%;">
     </footer>
 
-    <script src="thongtinsinhvien.js"></script> 
+    <script src="thongtinsinhvien.js"></script>
+    <script src="thongtinsinhvien1.js"></script>
 </body>
+
 </html>

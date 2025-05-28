@@ -13,6 +13,7 @@ const getStudentByEmail = async (email) => {
         tr.TenTruong AS 'Trường',
         ct.TenChuongTrinh AS 'Ngành',
         sv.MaLop AS 'Lớp'
+
     FROM
         SinhVien sv
     JOIN
