@@ -223,12 +223,26 @@ transform: translateY(-100%);
             color: var(--text-color);
         }
 
-        .form-group input[type="text"] {
+        .form-group input[type="text"],
+        .form-group select {
             width: 100%;
             padding: 10px;
             border: 1px solid var(--dark-gray);
             border-radius: 4px;
             font-size: 1rem;
+            background-color: var(--white);
+            color: var(--text-color);
+        }
+
+        .form-group select {
+            cursor: pointer;
+        }
+
+        .form-group select:focus,
+        .form-group input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(186, 28, 28, 0.1);
         }
 
         .form-actions {
@@ -470,6 +484,17 @@ transform: translateY(-100%);
                 <div class="registration-form-container">
                     <div class="registration-form">
                         <h2>Thêm Môn Học</h2>
+                        <div class="form-group">
+                            <label for="semesterSelect">Kì Học:</label>
+                            <select id="semesterSelect">
+                                <option value="">-- Chọn kì học --</option>
+                                <option value="2025.1">2025.1</option>
+                                <option value="2024.2" selected>2024.2</option>
+                                <option value="2024.1">2024.1</option>
+                                <option value="2023.2">2023.2</option>
+                                <option value="2023.1">2023.1</option>
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="courseCode">Mã Môn Học:</label>
                             <input type="text" id="courseCode" placeholder="Nhập mã môn học (VD: IT001)">
