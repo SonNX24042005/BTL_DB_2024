@@ -15,7 +15,7 @@ const programRoutes = require('./routes/programRoutes');
 const gradeRoutes = require('./routes/gradeRoutes');
 const grade1Routes = require('./routes/grade1Routes');
 const totalCreditRoutes = require('./routes/totalCreditRoutes');
-
+const DKHTRoutes = require('./routes/DKHTRoutes');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -31,10 +31,9 @@ app.use('/api', programRoutes);
 app.use('/api', gradeRoutes);
 app.use('/api', grade1Routes);
 app.use('/api', totalCreditRoutes); // Tiền tố /api cho các route tổng tín chỉ
+app.use('/api', DKHTRoutes); // Tiền tố /api cho các route đăng ký học phần
 app.use('/api', authMiddleware, newsRoutes); // Tiền tố /api cho các route tin tức
 app.use('/api', authMiddleware, eventRoutes); // Tiền tố /api cho các route sự kiện
-
-
 
 
 // Serve static files từ thư mục Frontend

@@ -8,10 +8,6 @@ function createMssvFromEmail(email) {
     return (numberMatch && numberMatch[1]) ? '20' + numberMatch[1] : null;
 }
 
-function sumTinChi(mssv) {
-
-}
-
 // Script để lấy và hiển thị thông tin sinh viên
 document.addEventListener('DOMContentLoaded', function () {
     console.log("Script bắt đầu chạy."); // Kiểm tra script có chạy không
