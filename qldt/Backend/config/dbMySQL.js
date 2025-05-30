@@ -6,7 +6,7 @@ const connection = mysql.createPool({
   host: process.env.DB_HOST_MYSQL || 'localhost', // Ưu tiên dùng .env, nếu không có thì dùng 'localhost'
   port: process.env.DB_PORT_MYSQL || 3306,     // Ưu tiên dùng .env, nếu không có thì dùng 3306
   user: process.env.DB_USER_MYSQL || 'root',     // Ưu tiên dùng .env, nếu không có thì dùng 'root'
-  password: process.env.DB_PASSWORD_MYSQL || 'clear', // Ưu tiên dùng .env, nếu không có thì dùng 'root'
+  password: process.env.DB_PASSWORD_MYSQL || 'root', // Ưu tiên dùng .env, nếu không có thì dùng 'root'
   database: process.env.DB_NAME_MYSQL || 'QLDT',   // Ưu tiên dùng .env, nếu không có thì dùng 'QLDT'
   waitForConnections: true,
   connectionLimit: 10, // Số kết nối tối đa trong pool
