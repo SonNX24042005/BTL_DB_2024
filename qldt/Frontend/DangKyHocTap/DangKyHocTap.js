@@ -28,9 +28,40 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 3000);
     }
 
-    // Function to add course to the table
+    //Fution to showSelect options for semester
+    async function loadSemesters() {
+        try {
+            const response = await fetch('/api/hocky');
+            const semesters = await response.json();
+
+            const select = document.getElementById('semesterSelect');
+            select.innerHTML = '<option value="">-- Chọn kì học --</option>';
+
+            semesters.forEach(sem => {
+                const option = document.createElement('option');
+                option.value = sem;
+                option.textContent = sem;
+                select.appendChild(option);
+            });
+
+            if (semesters.length > 0) {
+                select.value = semesters[0];
+            }
+        } catch (error) {
+            console.error('Lỗi load kỳ học:', error);
+        }
+    }
+
+    loadSemesters();
+
     async function addCourse() {
         const courseCode = courseCodeInput.value.trim().toUpperCase();
+        const selectedSemester = document.getElementById('semesterSelect').value;
+
+        if (!selectedSemester) {
+            showAlert('Vui lòng chọn kỳ học trước khi thêm môn!', 'warning');
+            return;
+        }
 
         if (!courseCode) {
             showAlert('Vui lòng nhập mã môn học!', 'danger');
@@ -45,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const courseData = await response.json();
 
-            // Kiểm tra xem môn học đã tồn tại trong bảng chưa
+            // Kiểm tra môn học đã tồn tại trong bảng chưa
             const existingRows = coursesTableBody.querySelectorAll('tr');
             for (let row of existingRows) {
                 if (row.cells[1].textContent === courseCode) {
@@ -54,20 +85,16 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            // Tạo dòng mới
+            // Tạo dòng mới với kỳ học đã chọn
             const newRow = document.createElement("tr");
             newRow.innerHTML = `
-                <td><input type="checkbox" class="course-checkbox"></td>
-                <td>${courseData.maHP}</td>
-                <td>${courseData.tenHP}</td>
-                <td>${courseData.hinhThuc}</td>
-                <td>
-                    <select>
-                        ${courseData.kyHocList.map(mkh => `<option value="${mkh}">${mkh}</option>`).join("")}
-                    </select>
-                </td>
-                <td>Chưa đăng ký</td>
-            `;
+            <td><input type="checkbox" class="course-checkbox"></td>
+            <td>${courseData.maHP}</td>
+            <td>${courseData.tenHP}</td>
+            <td>${courseData.hinhThuc}</td>
+            <td>${selectedSemester}</td>
+            <td>Chưa đăng ký</td>
+        `;
 
             coursesTableBody.appendChild(newRow);
             showAlert('Đã thêm môn học vào danh sách!', 'success');
@@ -77,9 +104,9 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Gắn sự kiện cho nút thêm học phần
     addCourseBtn.addEventListener('click', addCourse);
 
-    // Function to remove selected courses
     async function removeCourses() {
         const checkboxes = document.querySelectorAll('.course-checkbox:checked');
         if (checkboxes.length === 0) {
@@ -96,8 +123,8 @@ document.addEventListener('DOMContentLoaded', function () {
             if (status === 'Đã đăng ký') {
                 // Môn đã đăng ký, cần xóa trên server
                 coursesToDelete.push({
-                    MaHP: row.cells[1].textContent,
-                    MaKyHoc: row.cells[4].querySelector('select').value
+                    MaHP: row.cells[1].textContent.trim(),
+                    MaKyHoc: row.cells[4].textContent.trim()  // <-- Đã sửa
                 });
             }
         });
@@ -108,7 +135,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 await deleteRegisteredCourses(MSSV, coursesToDelete);
             }
 
-            // Xóa các dòng checkbox được tick khỏi bảng (cả môn đã đăng ký và chưa đăng ký)
+            // Xóa các dòng checkbox được tick khỏi bảng
             checkboxes.forEach(checkbox => {
                 const row = checkbox.closest('tr');
                 row.remove();
@@ -122,6 +149,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    // Gắn sự kiện cho nút xóa học phần
     removeCourseBtn.addEventListener('click', removeCourses);
 
     const userEmail = localStorage.getItem('username');
@@ -146,19 +174,25 @@ document.addEventListener('DOMContentLoaded', function () {
         const rows = coursesTableBody.querySelectorAll('tr');
         const selectedCourses = [];
 
+        const selectedSemester = document.getElementById('semesterSelect').value;
+
+        if (!selectedSemester) {
+            showAlert('Vui lòng chọn kỳ học trước khi gửi đăng ký!', 'danger');
+            return;
+        }
+
         rows.forEach(row => {
             if (row.dataset.markedForRemoval === 'true') return;
 
             const status = row.cells[5].textContent.trim();
-            if (status === 'Đã đăng ký') return; // Bỏ qua môn đã đăng ký
+            if (status === 'Đã đăng ký') return;
 
             const maHP = row.cells[1].textContent;
-            const kiHoc = row.cells[4].querySelector('select').value;
 
             selectedCourses.push({
                 MSSV: MSSV,
                 MaHP: maHP,
-                MaKyHoc: kiHoc
+                MaKyHoc: selectedSemester
             });
         });
 
@@ -175,33 +209,31 @@ document.addEventListener('DOMContentLoaded', function () {
                     'Authorization': `Bearer ${token}`
                 },
                 body: JSON.stringify({ courses: selectedCourses.map(({ MaHP, MaKyHoc }) => ({ MaHP, MaKyHoc })) })
-
             });
-            console.log("Response status:", response.status); // Kiểm tra trạng thái phản hồi
 
-            const data = await response.json(); // Bắt buộc gọi trước khi throw
+            const data = await response.json();
 
             if (!response.ok) {
-                //Hiển thị lỗi từ server (ví dụ: lỗi trùng môn, lỗi kỳ học...)
                 showAlert(data.message || 'Gửi đăng ký thất bại!', 'danger');
-                return; // Dừng lại
+                return;
             }
 
-            // Cập nhật trạng thái các dòng
             rows.forEach(row => {
                 if (row.dataset.markedForRemoval === 'true') {
-                    row.remove(); // Xoá khỏi DOM
+                    row.remove();
                 } else {
                     row.cells[5].textContent = 'Đã đăng ký';
                     row.cells[5].className = 'status-registered';
                 }
             });
+
             showAlert('Đăng ký học tập thành công!', 'success');
         } catch (error) {
             console.error('Lỗi khi gửi đăng ký:', error);
             showAlert('Có lỗi xảy ra khi gửi đăng ký!', 'danger');
         }
     }
+    // Gắn sự kiện cho nút gửi đăng ký
     submitRegistrationBtn.addEventListener('click', submitRegistration);
 
     // Hiển thị danh sách học phần đã đăng ký
@@ -219,10 +251,20 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
+    document.getElementById('semesterSelect').addEventListener('change', () => {
+        fetchRegisteredCourses(MSSV);
+    });
+
+
     function renderRegisteredCourses(courses) {
+
         coursesTableBody.innerHTML = ""; // Xóa bảng cũ
 
-        courses.forEach(course => {
+        const selectedSemester = document.getElementById('semesterSelect').value;
+
+        const filteredCourses = courses.filter(course => course.kyHoc === selectedSemester);
+
+        filteredCourses.forEach(course => {
             const row = document.createElement("tr");
 
             row.innerHTML = `
@@ -230,11 +272,7 @@ document.addEventListener('DOMContentLoaded', function () {
             <td>${course.maHP}</td>
             <td>${course.tenHP}</td>
             <td>${course.hinhThuc || ''}</td>
-            <td>
-                <select disabled>
-                    <option value="${course.kyHoc}">${course.kyHoc}</option>
-                </select>
-            </td>
+            <td>${course.kyHoc}</td>
             <td class="status-registered">Đã đăng ký</td>
         `;
 

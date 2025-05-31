@@ -8,11 +8,8 @@ const CourseNameByMaHP = async (maHP) => {
         WHERE h.MaHP = ?;
     `;
 
-    const sqlHocKy = `SELECT MaKyHoc FROM kyhoc ORDER BY MaKyHoc DESC LIMIT 4;`;
-
     try {
         const [monHocRows] = await pool.execute(sqlMonHoc, [maHP]);
-        const [kyHocRows] = await pool.execute(sqlHocKy);
 
         if (monHocRows.length === 0) {
             throw new Error('Không tìm thấy môn học với mã học phần: ' + maHP);
@@ -22,13 +19,32 @@ const CourseNameByMaHP = async (maHP) => {
             maHP: monHocRows[0].MaHP,
             tenHP: monHocRows[0].TenHP,
             hinhThuc: "Online",
-            kyHocList: kyHocRows.map(k => k.MaKyHoc),
             trangThai: "Chưa đăng ký"
         };
     } catch (error) {
         throw new Error('Lỗi khi lấy thông tin môn học: ' + error.message);
     }
 };
+
+//Hiển thị những học kỳ trong dropbox
+const viewSemester = async () => {
+    const sql = `
+        SELECT DISTINCT MaKyHoc
+        FROM kyhoc
+        ORDER BY MaKyHoc DESC LIMIT 4; 
+    `;
+    try {
+        const [rows] = await pool.execute(sql);
+
+        if (rows.length === 0) {
+            throw new Error('Không tìm thấy học kỳ nào.');
+        }
+
+        return rows.map(row => row.MaKyHoc);
+    } catch (error) {
+        throw new Error('Lỗi khi lấy danh sách học kỳ: ' + error.message);
+    }
+}
 
 // Đăng ký học phần
 const submitRegister = async (MSSV, MaHP, MaKyHoc) => {
@@ -71,7 +87,7 @@ const viewRegisteredCourses = async (MSSV) => {
         return rows.map(row => ({
             maHP: row.MaHP,
             tenHP: row.TenHP,
-            loaiLop: row.LoaiLop,
+            hinhThuc: "Online",
             kyHoc: row.MaKyHoc,
             trangThai: "Đã đăng ký"
         }));
@@ -97,6 +113,7 @@ const deleteRegisteredCourse = async (MSSV, MaHP, MaKyHoc) => {
 
 module.exports = {
     CourseNameByMaHP,
+    viewSemester,
     submitRegister,
     viewRegisteredCourses,
     deleteRegisteredCourse

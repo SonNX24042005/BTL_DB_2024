@@ -1,5 +1,5 @@
 // controllers/monhocController.js
-const { CourseNameByMaHP, submitRegister, viewRegisteredCourses, deleteRegisteredCourse } = require('../models/DKHTModel');
+const { CourseNameByMaHP, viewSemester, submitRegister, viewRegisteredCourses, deleteRegisteredCourse } = require('../models/DKHTModel');
 
 async function ThemMonHoc(req, res) {
     const maHP = req.params.MaHP; // Lấy từ URL thay vì body
@@ -9,6 +9,19 @@ async function ThemMonHoc(req, res) {
             return res.status(404).json({ message: "Môn học không tồn tại" });
         }
         res.json(monHocInfo);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Lỗi server: " + error.message });
+    }
+}
+
+async function ChonKyHoc(req, res) {
+    try {
+        const semesters = await viewSemester();
+        if (semesters.length === 0) {
+            return res.status(404).json({ message: "Không tìm thấy kỳ học" });
+        }
+        res.json(semesters);
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Lỗi server: " + error.message });
@@ -98,6 +111,7 @@ async function XoaMonHocDaDangKy(req, res) {
 
 module.exports = {
     ThemMonHoc,
+    ChonKyHoc,
     DangKyHocTap,
     LayMonHocDaDangKy,
     XoaMonHocDaDangKy
