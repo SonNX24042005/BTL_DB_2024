@@ -12,3 +12,6 @@ Tạo Bảng Nhóm HP: Mở TaoNhomHP, Run
 Tạo Bảng HP: Mở TaoHP, Run
 Tao Bảng CTDT: Mở TaoCTDT.sql, Run
 ...
+Tạo Bảng Lớp Thi: Mở TaoLopThi.sql
+Tạo Lịch Thi: Mở TaoLichThi.sql
+có một số mã lớp không có trong bảng lớp nma vẫn được đưa vào trong bảng lịch thi, dùng KiemTraMaLopKhonghopLe.sql để tránh sử dụng
