@@ -30,16 +30,16 @@ body {
 .header {
     width: 100%;
     background-color: #f0f2f5;
-    
+
 }
 
 nav img {
     width: 120px !important;
-    height: auto !important; 
+    height: auto !important;
     margin-left: 30px;
 }
 
-nav{
+nav {
     display: flex;
     position: sticky;
     padding: 15px 6%;
@@ -49,12 +49,12 @@ nav{
     background-color: rgba(13, 12, 12, 0.89);
 }
 
-.nav-links{
+.nav-links {
     flex: 1;
     text-align: right;
 }
 
-.nav-links ul li{
+.nav-links ul li {
     list-style: none;
     display: inline-block;
     padding: 5px 10px;
@@ -62,13 +62,14 @@ nav{
     margin-right: 15px;
 }
 
-.nav-links ul li a{
-    color:azure;
+.nav-links ul li a {
+    color: azure;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
 }
-.nav-links ul li::after{
+
+.nav-links ul li::after {
     content: '';
     width: 0%;
     height: 2px;
@@ -78,7 +79,7 @@ nav{
     transition: 0.5s;
 }
 
-.nav-links ul li:hover::after{
+.nav-links ul li:hover::after {
     width: 100%;
 }
 
@@ -88,9 +89,9 @@ nav{
     top: 100%;
     left: 0;
     right: auto;
-    background: rgba(30, 30, 30, 0.95); 
+    background: rgba(30, 30, 30, 0.95);
     width: max-content;
-    padding: 5px 0; 
+    padding: 5px 0;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 8px;
     z-index: 1000;
@@ -180,7 +181,8 @@ nav{
     gap: 10px;
 }
 
-select, button {
+select,
+button {
     padding: 8px 15px;
     border-radius: var(--border-radius);
     border: 1px solid var(--dark-gray);
@@ -239,7 +241,8 @@ button:hover {
     border-collapse: collapse;
 }
 
-.timetable th, .timetable td {
+.timetable th,
+.timetable td {
     border: 1px solid var(--dark-gray);
     padding: 10px;
     text-align: center;
@@ -315,7 +318,8 @@ button:hover {
     border-collapse: collapse;
 }
 
-.exam-table th, .exam-table td {
+.exam-table th,
+.exam-table td {
     border: 1px solid var(--dark-gray);
     padding: 12px;
 }
@@ -351,32 +355,32 @@ footer {
         align-items: flex-start;
         gap: 15px;
     }
-    
+
     .schedule-filters {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .timetable {
         font-size: 12px;
     }
-    
+
     nav {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+
     .nav-links {
         width: 100%;
         text-align: left;
         margin-top: 15px;
     }
-    
+
     .nav-links ul li {
         display: block;
         margin: 10px 0;
     }
-    
+
     .dropdown-menu {
         position: static;
         opacity: 1;
@@ -387,5 +391,5 @@ footer {
         background: rgba(50, 50, 50, 0.9);
         display: none;
     }
-    
+
 }

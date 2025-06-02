@@ -231,6 +231,7 @@
                         </tbody>
                     </table> -->
 
+
                     <table class="timetable">
                         <thead>
                             <tr>
@@ -338,7 +339,10 @@
                                 <th>Hình thức</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="exam-timetable-body">
+                            <!-- Dữ liệu lịch học sẽ được render vào đây -->
+                        </tbody>
+                        <!--    <tbody>
                             <tr>
                                 <td>1</td>
                                 <td>IT1142</td>
@@ -393,7 +397,7 @@
                                 <td>C2-403</td>
                                 <td>Trắc nghiệm</td>
                             </tr>
-                        </tbody>
+                        </tbody> -->
                     </table>
                 </div>
             </div>
@@ -403,7 +407,6 @@
     <footer>
         <img src="images/footer.jpeg" style="width: 100%;">
     </footer>
-
     <!--
     <script>
         // Hiển thị phù hợp khi chọn xem theo tuần hoặc tháng
@@ -503,8 +506,8 @@
 
             // Tại đây có thể thêm code để tải dữ liệu từ server theo tuần/tháng đã chọn
             alert('Đã cập nhật lịch học theo ' + (viewType === 'week' ? 'tuần' : 'tháng') + ': ' + periodText);
-        });
-    </script> -->
+        }); -->
+    </script>
     <script src="LichHoc.js"></script>
 </body>
 

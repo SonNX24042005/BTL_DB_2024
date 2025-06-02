@@ -26,9 +26,14 @@ const getSchedule = async (MSSV) => {
 // Lấy lịch thi theo MSSV
 const getExamSchedule = async (MSSV) => {
     const sql = `
-        SELECT 
-        FROM 
-        WHERE;
+        SELECT lhp.MaHP, hp.TenHP, lpt.NgayThi, lpt.KipThi, lpt.MaPhongThi
+        FROM lichthi lt
+        JOIN lopthi lpt ON lt.MaLopThi = lpt.MaLopThi
+        JOIN lichhoc lh ON lh.MaLopHP = lt.MaLopHP
+        JOIN lophocphan lhp ON lh.MaLopHP = lhp.MaLopHP
+        JOIN hp ON lhp.MaHP = hp.MaHP
+        WHERE lh.MSSV = ?
+        ORDER BY lpt.NgayThi, CAST(SUBSTRING(lpt.KipThi, 5) AS UNSIGNED);
     `;
 
     try {
@@ -37,7 +42,6 @@ const getExamSchedule = async (MSSV) => {
         if (rows.length === 0) {
             throw new Error('Không tìm thấy lịch thi phù hợp');
         }
-
         return rows;
     } catch (error) {
         throw new Error('Lỗi khi lấy thông tin lịch thi: ' + error.message);

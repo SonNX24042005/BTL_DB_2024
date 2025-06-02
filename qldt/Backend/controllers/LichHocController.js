@@ -15,6 +15,23 @@ async function LichHoc(req, res) {
 
 }
 
+async function LichThi(req, res) {
+    const { mssv } = req.params;
+
+    try {
+        const lichThi = await getExamSchedule(mssv);
+        if (!lichThi || lichThi.length === 0) {
+            return res.status(404).json({ message: "Không tìm thấy lịch thi" });
+        }
+        res.json(lichThi);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: "Lỗi server: " + error.message });
+    }
+
+}
+
 module.exports = {
-    LichHoc
+    LichHoc,
+    LichThi
 };

@@ -24,6 +24,15 @@ function isInWeek(weekStr, targetWeek) {
     return false;
 }
 
+// Hàm format ngày dd/mm/yyyy
+function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const day = String(date.getDate()).padStart(2, '0');
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const year = date.getFullYear();
+    return `${day}/${month}/${year}`;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Script bắt đầu chạy."); // Kiểm tra script có chạy không
 
@@ -73,23 +82,26 @@ document.addEventListener('DOMContentLoaded', () => {
     const tabs = document.querySelectorAll('.tab');
     tabs.forEach(tab => {
         tab.addEventListener('click', function () {
-            // Bỏ class 'active' khỏi tất cả tab
             tabs.forEach(t => t.classList.remove('active'));
-            // Thêm class 'active' cho tab được chọn
             this.classList.add('active');
 
-            // Xác định tab đang chọn
             const tabType = this.getAttribute('data-tab');
+            const weekSelect = document.getElementById('week-select');
+            const viewBtn = document.getElementById('view-btn');
+
             if (tabType === 'class') {
                 document.getElementById('class-schedule').style.display = 'block';
                 document.getElementById('exam-schedule').style.display = 'none';
-            } else {
+                if (weekSelect) weekSelect.disabled = false;  // mở khóa dropdown tuần
+                if (viewBtn) viewBtn.disabled = false;        // mở khóa nút xem
+            } else if (tabType === 'exam') {
                 document.getElementById('class-schedule').style.display = 'none';
                 document.getElementById('exam-schedule').style.display = 'block';
+                if (weekSelect) weekSelect.disabled = true;   // khóa dropdown tuần
+                if (viewBtn) viewBtn.disabled = true;         // khóa nút xem
             }
         });
     });
-
 
     document.getElementById("view-btn").addEventListener("click", () => {
         const selectedWeek = parseInt(document.getElementById("week-select").value, 10);
@@ -101,6 +113,60 @@ document.addEventListener('DOMContentLoaded', () => {
     fetchSchedule(MSSV, 28);
     updateWeekLabel(28);
 
+    // Các khung thời gian cố định
+    const FIXED_TIME_SLOTS = [
+        ["06:45", "07:30"],
+        ["07:30", "08:15"],
+        ["08:25", "09:10"],
+        ["09:20", "10:05"],
+        ["10:15", "11:00"],
+        ["11:00", "11:45"],
+        ["12:30", "13:15"],
+        ["13:15", "14:00"],
+        ["14:10", "14:55"],
+        ["15:05", "15:50"],
+        ["16:00", "16:45"],
+        ["16:45", "17:30"]
+    ];
+
+    const timeSlots = [
+        { label: "06:45 - 07:30", start: 6 * 60 + 45, end: 7 * 60 + 30 },
+        { label: "07:30 - 08:15", start: 7 * 60 + 30, end: 8 * 60 + 15 },
+        { label: "08:25 - 09:10", start: 8 * 60 + 25, end: 9 * 60 + 10 },
+        { label: "09:20 - 10:05", start: 9 * 60 + 10, end: 9 * 60 + 55 },
+        { label: "10:15 - 11:00", start: 10 * 60 + 5, end: 10 * 60 + 50 },
+        { label: "11:00 - 11:45", start: 11 * 60, end: 11 * 60 + 45 },
+        { label: "12:30 - 13:15", start: 12 * 60 + 45, end: 13 * 60 + 30 },
+        { label: "13:15 - 14:00", start: 13 * 60 + 30, end: 14 * 60 + 15 },
+        { label: "14:10 - 14:55", start: 14 * 60 + 25, end: 15 * 60 + 10 },
+        { label: "15:05 - 15:50", start: 15 * 60 + 10, end: 15 * 60 + 55 },
+        { label: "16:00 - 16:45", start: 16 * 60 + 5, end: 16 * 60 + 50 },
+        { label: "16:45 - 17:30", start: 17 * 60, end: 17 * 60 + 45 },
+    ];
+
+    function toMinutes(timeStr) {
+        const [h, m] = timeStr.split(":").map(Number);
+        return h * 60 + m;
+    }
+
+    // Tìm khung giờ phù hợp với thời gian bắt đầu
+    function findMatchingSlot(startTimeStr) {
+        const [h, m] = startTimeStr.split(":").map(Number);
+        const startMinutes = h * 60 + m;
+
+        for (let [startStr, endStr] of FIXED_TIME_SLOTS) {
+            const [sh, sm] = startStr.split(":").map(Number);
+            const [eh, em] = endStr.split(":").map(Number);
+            const slotStart = sh * 60 + sm;
+            const slotEnd = eh * 60 + em;
+
+            if (startMinutes >= slotStart && startMinutes < slotEnd) {
+                return `${startStr} - ${endStr}`;
+            }
+        }
+        return null;
+    }
+
     async function fetchSchedule(MSSV, weekNumber = null) {
         try {
             const res = await fetch(`/api/lichhoc/${MSSV}`);
@@ -109,45 +175,34 @@ document.addEventListener('DOMContentLoaded', () => {
             let data = await res.json();
             if (!Array.isArray(data)) throw new Error('Dữ liệu trả về không hợp lệ');
 
-            // Lọc data chỉ lấy môn học có trong tuần được chọn
+            // Lọc theo tuần
             if (weekNumber !== null) {
                 data = data.filter(item => isInWeek(item.TuanHoc, weekNumber));
             }
 
             const weekdays = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
-            const groupByStart = {};
-
-            // Gom nhóm theo giờ bắt đầu
-            data.forEach(item => {
-                const start = item.ThoiGianBatDau.trim();
-                const end = item.ThoiGianKetThuc.trim();
-                if (!groupByStart[start]) groupByStart[start] = [];
-                groupByStart[start].push({ ...item, end });
-            });
-
-            // Tạo bảng timetable: key = "start - max(end)", value = { Thứ: môn học }
             const timetable = {};
-            for (const start in groupByStart) {
-                const items = groupByStart[start];
 
-                // Lấy giờ kết thúc trễ nhất
-                const maxEnd = items.reduce((latest, curr) => curr.end > latest ? curr.end : latest, "00:00:00");
-                const timeLabel = formatTimeRange(start, maxEnd);
+            data.forEach(item => {
+                const start = item.ThoiGianBatDau.trim().slice(0, 5); // "06:45"
+                const end = item.ThoiGianKetThuc.trim().slice(0, 5); // giả sử dữ liệu có trường này
+                const slotLabel = findMatchingSlot(start);
+                if (!slotLabel) return;
 
-                timetable[timeLabel] = timetable[timeLabel] || {};
-                items.forEach(item => {
-                    const dayIndex = parseInt(item.Thu, 10) - 2;
-                    const day = (dayIndex >= 0 && dayIndex < weekdays.length) ? weekdays[dayIndex] : null;
-                    if (!day) return;
+                if (!timetable[slotLabel]) timetable[slotLabel] = {};
 
-                    timetable[timeLabel][day] = {
-                        name: item.TenHP,
-                        info: `${item.MaHP} - ${item.MaLopHP}`,
-                        room: `Phòng ${item.MaPhong}`,
-                        startTime: start
-                    };
-                });
-            }
+                const dayIndex = parseInt(item.Thu, 10) - 2;
+                const day = weekdays[dayIndex];
+                if (!day) return;
+
+                timetable[slotLabel][day] = {
+                    name: item.TenHP,
+                    info: `${item.MaHP} - ${item.MaLopHP}`,
+                    room: `Phòng ${item.MaPhong}`,
+                    startTime: start,
+                    endTime: end
+                };
+            });
 
             renderTimetable(timetable);
 
@@ -166,38 +221,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const weekdays = ["Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7", "Chủ nhật"];
 
-        // Tạo mảng từ timetableData và sắp xếp theo startTime
-        const timetableArray = Object.entries(timetableData).map(([timeLabel, entry]) => {
-            const startTime = Object.values(entry)[0]?.startTime || "00:00:00";
-            return { timeLabel, entry, startTime };
-        }).sort((a, b) => a.startTime.localeCompare(b.startTime));
+        // Dùng để ghi lại các ô đã được render có rowspan để tránh render trùng
+        const skipCells = {}; // key: `${slotIndex}-${day}`, value: true nếu cần skip
 
-        // Tạo bảng
-        timetableArray.forEach(({ timeLabel, entry }) => {
+        // Hàm tiện ích chuyển giờ "HH:mm" sang phút trong ngày
+        function toMinutes(timeStr) {
+            const [h, m] = timeStr.split(":").map(Number);
+            return h * 60 + m;
+        }
+
+        for (let slotIndex = 0; slotIndex < timeSlots.length; slotIndex++) {
+            const slot = timeSlots[slotIndex];
             const tr = document.createElement("tr");
 
+            // Cột giờ
             const timeTd = document.createElement("td");
             timeTd.className = "time-cell";
-            timeTd.textContent = timeLabel;
+            timeTd.textContent = slot.label;
             tr.appendChild(timeTd);
 
-            weekdays.forEach(day => {
+            for (let dayIndex = 0; dayIndex < weekdays.length; dayIndex++) {
+                const day = weekdays[dayIndex];
+                // Nếu ô này đã bị skip do rowspan ở ô trên rồi thì bỏ qua render
+                if (skipCells[`${slotIndex}-${day}`]) {
+                    continue;
+                }
+
                 const td = document.createElement("td");
-                const course = entry[day];
-                if (course) {
+                const entry = timetableData[slot.label]?.[day];
+
+                if (entry) {
+                    // Tính số slot chiếm dụng dựa trên thời gian thực của môn
+                    const startMin = toMinutes(entry.startTime);
+                    const endMin = toMinutes(entry.endTime); // cần thêm endTime trong timetableData khi fetch
+                    let rowspan = 1;
+
+                    // Tính số slot mà môn học này bao phủ
+                    for (let next = slotIndex + 1; next < timeSlots.length; next++) {
+                        if (timeSlots[next].start < endMin) {
+                            rowspan++;
+                        } else {
+                            break;
+                        }
+                    }
+
+                    td.rowSpan = rowspan;
                     td.innerHTML = `
-                    <div class="course-item">
-                        <div class="course-name">${course.name}</div>
-                        <div class="course-info">${course.info}</div>
-                        <div class="course-location">${course.room}</div>
+                        <div class="course-item">
+                        <div class="course-name">${entry.name}</div>
+                        <div class="course-info">${entry.info}</div>
+                        <div class="course-location">${entry.room}</div>
                     </div>
                 `;
+                    td.classList.add("has-class");
+
+                    // Đánh dấu skip các ô con sẽ bị gộp lại
+                    for (let r = slotIndex + 1; r < slotIndex + rowspan; r++) {
+                        skipCells[`${r}-${day}`] = true;
+                    }
+                } else {
+                    td.innerHTML = "";
                 }
+
                 tr.appendChild(td);
-            });
+            }
 
             tbody.appendChild(tr);
-        });
+        }
     }
 
     // Rút gọn giờ: "06:45:00" → "06:45"
@@ -206,10 +296,51 @@ document.addEventListener('DOMContentLoaded', () => {
         return `${h}:${m}`;
     }
 
-    // Trả về chuỗi "06:45 - 10:05"
-    function formatTimeRange(start, end) {
-        return `${formatTime(start)} - ${formatTime(end)}`;
+    // Ngăn menu đóng khi click bên trong menu
+    document.querySelectorAll('.dropdown-menu').forEach(menu => {
+        menu.addEventListener('click', function (event) {
+            event.stopPropagation();
+        });
+    });
+
+    // Đóng dropdown khi click bên ngoài
+    document.addEventListener('click', function () {
+        dropdowns.forEach(dropdown => {
+            dropdown.querySelector('.dropdown-menu').classList.remove('active');
+        });
+    });
+
+    // Lịch thi
+    async function loadExamSchedule(mssv) {
+        try {
+            const response = await fetch(`/api/lichthi/${mssv}`); // 
+            if (!response.ok) {
+                throw new Error('Lỗi khi lấy dữ liệu lịch thi');
+            }
+            const data = await response.json();
+
+            const tbody = document.getElementById('exam-timetable-body');
+            tbody.innerHTML = ''; // xóa dữ liệu cũ
+
+            data.forEach((item, index) => {
+                const tr = document.createElement('tr');
+                tr.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${item.MaHP}</td>
+                <td>${item.TenHP}</td>
+                <td class="exam-date">${formatDate(item.NgayThi)}</td>
+                <td>Kíp ${item.KipThi}</td>
+                <td>${item.MaPhongThi}</td>
+                <td>Trắc nghiệm/Tự luận</td>
+            `;
+                tbody.appendChild(tr);
+            });
+        } catch (error) {
+            console.error(error);
+            alert('Không thể tải lịch thi: ' + error.message);
+        }
     }
 
+    loadExamSchedule(MSSV); // Gọi hàm tải lịch thi khi trang được tải
 
 });
