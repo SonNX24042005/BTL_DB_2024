@@ -227,6 +227,7 @@ button:hover {
 
 .schedule-content {
     padding: 20px 30px;
+    overflow-x: auto; /* Thêm scroll ngang nếu cần */
 }
 
 .current-period {
@@ -239,6 +240,7 @@ button:hover {
 .timetable {
     width: 100%;
     border-collapse: collapse;
+    table-layout: fixed; /* Cố định layout để điều khiển độ rộng cột */
 }
 
 .timetable th,
@@ -246,6 +248,7 @@ button:hover {
     border: 1px solid var(--dark-gray);
     padding: 10px;
     text-align: center;
+    vertical-align: top; /* Căn nội dung lên trên */
 }
 
 .timetable th {
@@ -253,10 +256,17 @@ button:hover {
     font-weight: bold;
 }
 
+/* Cột thời gian có độ rộng cố định */
 .timetable .time-cell {
-    width: 80px;
+    width: 120px; /* Tăng độ rộng cột thời gian */
     font-weight: bold;
     background-color: var(--light-gray);
+}
+
+/* Các cột từ thứ 2 đến chủ nhật có độ rộng bằng nhau */
+.timetable th:not(.time-cell),
+.timetable td:not(.time-cell) {
+    width: calc((100% - 120px) / 7); /* Chia đều 7 cột còn lại */
 }
 
 .course-item {
@@ -265,6 +275,7 @@ button:hover {
     padding: 8px;
     margin-bottom: 5px;
     border-left: 4px solid var(--secondary-color);
+    word-wrap: break-word; /* Xuống dòng khi text dài */
 }
 
 .course-lecture {
@@ -285,16 +296,18 @@ button:hover {
 .course-name {
     font-weight: bold;
     margin-bottom: 3px;
+    font-size: 13px; /* Giảm font size cho vừa cột */
 }
 
 .course-info {
-    font-size: 12px;
+    font-size: 11px;
     color: #666;
 }
 
 .course-location {
     font-weight: bold;
     margin-top: 3px;
+    font-size: 12px;
 }
 
 /* Exam Schedule */
@@ -363,6 +376,28 @@ footer {
 
     .timetable {
         font-size: 12px;
+        min-width: 800px; /* Đảm bảo bảng không bị co quá nhỏ trên mobile */
+    }
+
+    .timetable .time-cell {
+        width: 100px; /* Giảm độ rộng cột thời gian trên mobile */
+    }
+
+    .timetable th:not(.time-cell),
+    .timetable td:not(.time-cell) {
+        width: calc((100% - 100px) / 7);
+    }
+
+    .course-name {
+        font-size: 11px;
+    }
+
+    .course-info {
+        font-size: 10px;
+    }
+
+    .course-location {
+        font-size: 10px;
     }
 
     nav {
