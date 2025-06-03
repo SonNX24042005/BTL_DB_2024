@@ -310,6 +310,32 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    const dropdowns = document.querySelectorAll('.dropdown');
+
+    // Thêm sự kiện click cho từng dropdown (cho cả desktop và mobile)
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        const menu = dropdown.querySelector('.dropdown-menu');
+
+        // Sự kiện khi click vào toggle
+        toggle.addEventListener('click', function (event) {
+            // Ngăn chặn hành vi mặc định của thẻ a
+            event.preventDefault();
+            // Dừng sự kiện lan truyền
+            event.stopPropagation();
+
+            // Đóng tất cả dropdown khác
+            dropdowns.forEach(otherDropdown => {
+                if (otherDropdown !== dropdown) {
+                    otherDropdown.querySelector('.dropdown-menu').classList.remove('active');
+                }
+            });
+
+            // Toggle dropdown hiện tại
+            menu.classList.toggle('active');
+        });
+    });
+
     // Lịch thi
     async function loadExamSchedule(mssv) {
         try {
